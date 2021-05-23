@@ -57,6 +57,16 @@ void Database::test()
 	delete _db;
 }
 
+UserRepository *UnitOfWork::GetUserRepository()
+{
+	return this->user_rep;
+}
+
+PersonsRepository* UnitOfWork::GetPersonsRepository()
+{
+	return this->persons_rep;
+}
+
 UnitOfWork::UnitOfWork()
 {
 	this->database = database;

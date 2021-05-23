@@ -8,7 +8,8 @@ class MYSQLUnitOfWork : public UnitOfWork
 {
 public:
 	
-	void Commit();
+	bool Begin();
+	bool Commit();
 	void Abort();
 	bool Connect(Database* database);
 	bool CheckIfDatabaseEmpty();
@@ -19,5 +20,6 @@ public:
 	static void test();
 private:
 	MYSQL mysql_connection;
+
 };
 
