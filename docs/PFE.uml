@@ -11195,9 +11195,9 @@ that day
 <XPD:ATTR name="Name" type="string">GetTransactions</XPD:ATTR>
 <XPD:REF name="Owner">mSM1AVIYvU+eBn/n1QkjPAAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="7W638C4BXEGhegaF5yp/eAAA">
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="8klzB0BRlkaI0XS1ck3eIwAA">
 <XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">void</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Transaction[]</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">7EPDPZNuTECOzOSslKVjmAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
