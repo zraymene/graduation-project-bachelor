@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\core\dal\mysql\MYSQLGroupsRepository.h" />
+    <ClInclude Include="source\core\dal\GroupsRepository.h" />
+    <ClInclude Include="source\core\dal\mysql\MYSQLTransactionsRepository.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLPersonsRepository.h" />
     <ClInclude Include="source\core\dal\PersonsRepository.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLUserRepository.h" />
@@ -28,8 +31,12 @@
     <ClInclude Include="source\core\Application.h" />
     <ClInclude Include="source\core\dal\UnitOfWork.h" />
     <ClInclude Include="source\core\dal\UserRepository.h" />
+    <ClInclude Include="source\core\dal\TransactionsRepository.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\core\dal\mysql\MYSQLGroupsRepository.cpp" />
+    <ClCompile Include="source\core\dal\GroupsRepository.cpp" />
+    <ClCompile Include="source\core\dal\mysql\MYSQLTransactionsRepository.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLPersonsRepository.cpp" />
     <ClCompile Include="source\core\dal\PersonsRepository.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLUserRepository.cpp" />
@@ -39,6 +46,7 @@
     <ClCompile Include="source\core\Application.cpp" />
     <ClCompile Include="source\core\dal\UnitOfWork.cpp" />
     <ClCompile Include="source\core\dal\UserRepository.cpp" />
+    <ClCompile Include="source\core\dal\TransactionsRepository.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -4,6 +4,8 @@
 
 #include "MYSQLUserRepository.h"
 #include "MYSQLPersonsRepository.h"
+#include "MYSQLTransactionsRepository.h"
+#include "MYSQLGroupsRepository.h"
 
 #define CREATE_DATABASE_QUERY "CREATE DATABASE IF NOT EXISTS school_app"
 
@@ -144,10 +146,16 @@ MYSQLUnitOfWork::MYSQLUnitOfWork()
 {
 	this->user_rep = new MYSQLUserRepository(&CON);
 	this->persons_rep = new MYSQLPersonsRepository(&CON);
+	this->transactions_rep = new MYSQLTransactionsRepository(&CON);
+	this->groups_rep = new MYSQLGroupsRepository(&CON);
 }
 
 MYSQLUnitOfWork::~MYSQLUnitOfWork()
 {
+	// Delete repositories
+	delete this->user_rep, this->persons_rep,
+		this->transactions_rep, this->groups_rep;
+
 	// Close connection and free mysql library
 	mysql_close(&CON);
 	mysql_library_end();
@@ -190,13 +198,29 @@ void MYSQLUnitOfWork::test()
 	person.phone = "0000000111";
 	uow.GetPersonsRepository()->EditPerson(person, false);
 	person.id = 1;
-	uow.GetPersonsRepository()->DeletePerson(person, false);	
+	uow.GetPersonsRepository()->DeletePerson(person.id, false);	
 	uow.Commit();
 
 	std::vector<Person> persons = uow.GetPersonsRepository()->GetPersons(false);
-	wxLogDebug("Total teachers: %d!",
+	wxLogDebug("Total teachers: %d.",
 		(int)persons.size());
 	*/
+
+	//################## TransactionsRepository TEST ####################
+	/*Transaction trans;
+	trans.name = "Pay teacher";
+	trans.amount = 1999.05f;
+	
+	uow.Begin();
+	uow.GetTransactionsRepository()->AddTransaction(trans);
+
+	trans.amount = -1000.99f;
+	uow.GetTransactionsRepository()->EditTransaction(trans);
+	uow.GetTransactionsRepository()->DeleteTransaction(1);
+	uow.Commit();
+	std::vector<Transaction> transs = uow.GetTransactionsRepository()
+		->GetTransactions();
+	wxLogDebug("Total transactions: %d.", (int)transs.size());*/
 }
 
 

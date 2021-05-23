@@ -23,7 +23,7 @@ public:
 	// false will treat person as a teacher
 	virtual void AddPerson(Person& person, bool is_student = true) = 0;
 	virtual void EditPerson(Person person, bool is_student = true) = 0;
-	virtual void DeletePerson(Person person, bool is_student = true) = 0;
+	virtual void DeletePerson(int id, bool is_student = true) = 0;
 	
 	virtual std::vector<Person> GetPersons(bool is_student = true) = 0;
 };

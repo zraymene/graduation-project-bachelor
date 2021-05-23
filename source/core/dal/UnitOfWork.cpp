@@ -67,6 +67,16 @@ PersonsRepository* UnitOfWork::GetPersonsRepository()
 	return this->persons_rep;
 }
 
+TransactionsRepository* UnitOfWork::GetTransactionsRepository()
+{
+	return this->transactions_rep;
+}
+
+GroupsRepository* UnitOfWork::GetGroupsRepository()
+{
+	return this->groups_rep;
+}
+
 UnitOfWork::UnitOfWork()
 {
 	this->database = database;

@@ -140,7 +140,7 @@ void MYSQLPersonsRepository::EditPerson(Person person, bool is_student)
 	mysql_stmt_close(stmt);
 }
 
-void MYSQLPersonsRepository::DeletePerson(Person person, bool is_student)
+void MYSQLPersonsRepository::DeletePerson(int id, bool is_student)
 {
 	MYSQL_STMT* stmt = mysql_stmt_init(this->mysql_connection);
 	MYSQL_BIND bind[1];
@@ -163,11 +163,11 @@ void MYSQLPersonsRepository::DeletePerson(Person person, bool is_student)
 	memset(bind, 0, sizeof(bind));
 
 	bind[0].buffer_type = MYSQL_TYPE_LONG;
-	bind[0].buffer = &person.id;
+	bind[0].buffer = &id;
 
 	if (mysql_stmt_bind_param(stmt, bind))
 	{
-		wxLogDebug("#Failed to binding 'DELETE PERSON' statement, Error : %s!",
+		wxLogDebug("#Failed to bind 'DELETE PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
 		return;
 	}

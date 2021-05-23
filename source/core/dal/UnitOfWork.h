@@ -5,6 +5,8 @@
 
 #include "UserRepository.h"
 #include "PersonsRepository.h"
+#include "TransactionsRepository.h"
+#include "GroupsRepository.h"
 
 #define DB_SAVE_FILE "data"
 
@@ -37,6 +39,8 @@ public:
 
 	UserRepository* GetUserRepository();
 	PersonsRepository* GetPersonsRepository();
+	TransactionsRepository* GetTransactionsRepository();
+	GroupsRepository* GetGroupsRepository();
 
 	UnitOfWork();
 	~UnitOfWork();
@@ -46,5 +50,7 @@ protected:
 
 	UserRepository* user_rep;
 	PersonsRepository* persons_rep;
+	TransactionsRepository* transactions_rep;
+	GroupsRepository* groups_rep;
 };
 

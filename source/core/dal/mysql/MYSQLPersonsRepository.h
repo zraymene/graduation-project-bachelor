@@ -8,7 +8,7 @@ class MYSQLPersonsRepository : public PersonsRepository
 public:
     void AddPerson(Person& person, bool is_student = true);
     void EditPerson(Person person, bool is_student = true);
-    void DeletePerson(Person person, bool is_student = true);
+    void DeletePerson(int id, bool is_student = true);
 
     std::vector<Person> GetPersons(bool is_student = true);
 
