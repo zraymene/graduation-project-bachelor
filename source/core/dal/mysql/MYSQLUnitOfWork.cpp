@@ -77,6 +77,7 @@ bool MYSQLUnitOfWork::Connect(Database* database)
 	{
 		wxLogDebug("#Failed to connect to MYSQL database, Error : %s!",
 			mysql_error(&CON));
+
 		return false;
 	}
 	
@@ -169,7 +170,7 @@ void MYSQLUnitOfWork::test()
 	Database* db = Database::GetDatabaseFromFile();
 
 	if (!db)
-		db = new Database("localhost", "root", "", "");
+		db = new Database(DB_TYPE_MYSQL, "localhost", "root", "", "");
 
 	db->WriteDataBaseToFile();
 

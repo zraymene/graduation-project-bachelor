@@ -10,16 +10,19 @@
 
 #define DB_SAVE_FILE "data"
 
+#define DB_TYPE_MYSQL 0
+
 class Database {
 	public:
+		int type = DB_TYPE_MYSQL; // mysql
 		std::string hostname = "";
 		std::string username = "";
 		std::string password = "";
 		std::string database = "";
 
 		Database() {};
-		Database(std::string hostname, std::string username,
-			std::string password, std::string database);
+		Database(int type, std::string hostname, std::string username,
+			std::string password, std::string database = "");
 
 		void WriteDataBaseToFile();
 		

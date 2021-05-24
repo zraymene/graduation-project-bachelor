@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\ui\dialog\RegisterDialog.h" />
+    <ClInclude Include="source\ui\dialog\LoginDialog.h" />
+    <ClInclude Include="source\ui\dialog\SettingsDialog.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLGroupsRepository.h" />
     <ClInclude Include="source\core\dal\GroupsRepository.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLTransactionsRepository.h" />
@@ -34,6 +37,9 @@
     <ClInclude Include="source\core\dal\TransactionsRepository.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\ui\dialog\RegisterDialog.cpp" />
+    <ClCompile Include="source\ui\dialog\LoginDialog.cpp" />
+    <ClCompile Include="source\ui\dialog\SettingsDialog.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLGroupsRepository.cpp" />
     <ClCompile Include="source\core\dal\GroupsRepository.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLTransactionsRepository.cpp" />

@@ -3,8 +3,10 @@
 #include <iostream>
 #include <fstream>
 
-Database::Database(std::string hostname, std::string username, std::string password, std::string database)
+Database::Database(int type,std::string hostname, std::string username,
+	std::string password, std::string database)
 {
+	this->type = type;
 	this->hostname = hostname;
 	this->username = username;
 	this->password = password;
@@ -17,7 +19,7 @@ void Database::WriteDataBaseToFile()
 
 	// Open file to write and replace content if the file already exists
 	file.open(DB_SAVE_FILE, std::ios::out | std::ios::trunc | std::ios::binary );
-	file << this->hostname << ' ' << this->username << ' ' 
+	file << this->type << this->hostname << ' ' << this->username << ' ' 
 		<< this->password << ' ' << this->database;
 	file.close();
 }
@@ -33,7 +35,8 @@ Database* Database::GetDatabaseFromFile()
 
 	Database* db = new Database();
 
-	file >> db->hostname >> db->username >> db->password >> db->database;
+	file >> db->type >> db->hostname >>
+		db->username >> db->password >> db->database;
 
 	file.close();
 	return db;
@@ -42,7 +45,7 @@ Database* Database::GetDatabaseFromFile()
 void Database::test()
 {
 
-	Database db("localhost", "root", "pass", "db");
+	Database db(DB_TYPE_MYSQL, "localhost", "root", "pass", "db");
 
 	db.WriteDataBaseToFile();
 
@@ -79,7 +82,7 @@ GroupsRepository* UnitOfWork::GetGroupsRepository()
 
 UnitOfWork::UnitOfWork()
 {
-	this->database = database;
+	
 }
 
 UnitOfWork::~UnitOfWork()
