@@ -17,8 +17,8 @@
 #define DELETE_TEACHER_STMT "DELETE FROM `school_app`.`teacher` WHERE id = ?"
 #define DELETE_STUDENT_STMT "DELETE FROM `school_app`.`student` WHERE id = ?"
 
-#define SELECT_TEACHER_STMT "SELECT * FROM `school_app`.`teacher`"
-#define SELECT_STUDENT_STMT "SELECT * FROM `school_app`.`student`"
+#define SELECT_ALL_TEACHER_STMT "SELECT * FROM `school_app`.`teacher`"
+#define SELECT_ALL_STUDENT_STMT "SELECT * FROM `school_app`.`student`"
 
 void MYSQLPersonsRepository::AddPerson(Person& person, bool is_student)
 {
@@ -191,9 +191,9 @@ std::vector<Person> MYSQLPersonsRepository::GetPersons(bool is_student)
 	int x;
 
 	if (is_student)
-		x = mysql_query(this->mysql_connection, SELECT_STUDENT_STMT);
+		x = mysql_query(this->mysql_connection, SELECT_ALL_STUDENT_STMT);
 	else
-		x = mysql_query(this->mysql_connection, SELECT_TEACHER_STMT);
+		x = mysql_query(this->mysql_connection, SELECT_ALL_TEACHER_STMT);
 
 	if(x)
 	{

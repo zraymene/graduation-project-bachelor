@@ -9,7 +9,7 @@
 	WHERE `id`=?"
 
 #define DELETE_TRANSACTION_STMT "DELETE FROM `school_app`.`transaction` WHERE id = ?"
-#define SELECT_TRANSACTION_STMT "SELECT * FROM `school_app`.`transaction`"
+#define SELECT_ALL_TRANSACTION_STMT "SELECT * FROM `school_app`.`transaction`"
 
 void MYSQLTransactionsRepository::AddTransaction(Transaction& transaction)
 {
@@ -145,7 +145,7 @@ std::vector<Transaction> MYSQLTransactionsRepository::GetTransactions()
 {
 	std::vector<Transaction> transactions;
 
-	if (mysql_query(this->mysql_connection, SELECT_TRANSACTION_STMT))
+	if (mysql_query(this->mysql_connection, SELECT_ALL_TRANSACTION_STMT))
 	{
 		wxLogDebug("#Failed to retrive transactions list, Error : %s!",
 			mysql_error(this->mysql_connection));

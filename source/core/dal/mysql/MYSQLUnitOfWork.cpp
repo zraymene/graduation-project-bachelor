@@ -97,6 +97,7 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 
 	// Disable transactions auto commit
 	mysql_autocommit(&CON, 0);
+	
 
 	// Create table if it doesn't exists
 	std::list<std::string> table_queries {
@@ -221,6 +222,43 @@ void MYSQLUnitOfWork::test()
 	std::vector<Transaction> transs = uow.GetTransactionsRepository()
 		->GetTransactions();
 	wxLogDebug("Total transactions: %d.", (int)transs.size());*/
+	
+	/*
+
+	//################## Group TEST ####################
+
+
+	/*std::vector<Group> transs = uow.GetGroupsRepository()
+		->GetGroups();
+	wxLogDebug("Total groups: %d.", (int)transs.size());
+	*/
+
+	Group group;
+	group.id = 10;
+	group.name = "ENGLISH";
+	group.teacher_id = 5;
+	group.price = 800.09f;
+	group.school_percentage = 50.00f;
+	group.teacher_percentage = 50.00f;
+	group.lessons_per_week = 4;
+
+	Person person;
+	person.id = 10;
+
+	Absence absence(5,10, "2013-08-05 18:19:03", false);
+	
+	uow.Begin();
+	//uow.GetGroupsRepository()->EditGroupLessons(group);
+	//uow.GetGroupsRepository()->AddGroup(group);
+	//uow.GetGroupsRepository()->DeleteGroup(7);
+	
+	//uow.GetGroupsRepository()->DeleteAbsence(absence);
+	//uow.GetGroupsRepository()->DeleteAbsences(5, true);
+	
+	uow.Commit();
+
+	//uow.GetGroupsRepository()->GetGroupLessons(group);
+	std::vector<Absence> absences = uow.GetGroupsRepository()->GetAbsence(nullptr, &person);
 }
 
 
