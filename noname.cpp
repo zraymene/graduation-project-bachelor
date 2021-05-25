@@ -14,7 +14,7 @@ LoginDialog::LoginDialog( wxWindow* parent, wxWindowID id, const wxString& title
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
 	wxStaticBoxSizer* sbSizer3;
-	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Login") ), wxVERTICAL );
+	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxEmptyString ), wxVERTICAL );
 	
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -24,7 +24,7 @@ LoginDialog::LoginDialog( wxWindow* parent, wxWindowID id, const wxString& title
 	bSizer4->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
 	
 	
-	bSizer4->Add( 0, 0, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer4->Add( 0, 0, 1, wxEXPAND, 5 );
 	
 	username_ctr = new wxTextCtrl( sbSizer3->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer4->Add( username_ctr, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -88,7 +88,7 @@ RegisterDialog::RegisterDialog( wxWindow* parent, wxWindowID id, const wxString&
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
 	wxStaticBoxSizer* sbSizer3;
-	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Register") ), wxVERTICAL );
+	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxEmptyString ), wxVERTICAL );
 	
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -98,7 +98,7 @@ RegisterDialog::RegisterDialog( wxWindow* parent, wxWindowID id, const wxString&
 	bSizer4->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
 	
 	
-	bSizer4->Add( 0, 0, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer4->Add( 0, 0, 1, wxEXPAND, 5 );
 	
 	username_ctr = new wxTextCtrl( sbSizer3->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer4->Add( username_ctr, 0, wxALIGN_CENTER|wxALL, 5 );

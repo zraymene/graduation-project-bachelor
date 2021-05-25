@@ -1,8 +1,8 @@
-#include "SettingsDialog.h"
-#include "LoginDialog.h"
-#include "RegisterDialog.h"
+#include "../InitialPage.h"
 
 Database* db;
+
+class IntialPage;
 
 void SettingsDialog::Init(bool auto_connect)
 {
@@ -27,19 +27,22 @@ void SettingsDialog::Init(bool auto_connect)
 
 void SettingsDialog::TryConnect()
 {
-	this->m_button7->Enable(false);
+	this->save_button->Enable(false);
 
-	this->app->SelectUnitOfWork(db->type);
+	this->page->app->SelectUnitOfWork(db->type);
 
 	// Try to connect
-	if (!this->app->GetUnitOfWork()->Connect(db))
+	if (!this->page->app->GetUnitOfWork()->Connect(db))
 	{
 		wxMessageBox("Error establishing a database connection!\
 				\nPlease verify database's informations and then click save.",
 			"Connection Error",
 			wxICON_ERROR | wxOK);
-		this->m_button7->Enable();
+
+		this->save_button->Enable();
+
 		delete db;
+
 		return;
 	}
 
@@ -47,20 +50,20 @@ void SettingsDialog::TryConnect()
 	db->WriteDataBaseToFile();
 
 	// Check if database is empty
-	if (this->app->GetUnitOfWork()->CheckIfDatabaseEmpty())
+	if (this->page->app->GetUnitOfWork()->CheckIfDatabaseEmpty())
 	{
-		RegisterDialog* register_dialog = new RegisterDialog(this->app);
-		register_dialog->Show();
+		this->page->ShowDialog<RegisterDialog>();
 	}
 	else {
-		LoginDialog* login_dialog = new LoginDialog(this->app);
-		login_dialog->Show();
+		this->page->ShowDialog<LoginDialog>();
 	}
 
-	this->Close();
+	this->save_button->Enable();
+
+	this->dialog->Hide();
 }
 
-void SettingsDialog::SwapToSettings(wxCommandEvent& event)
+void SettingsDialog::SaveButtonClick(wxCommandEvent& event)
 {
 	db = new Database(
 		this->database_choice->GetSelection(),
@@ -74,112 +77,35 @@ void SettingsDialog::SwapToSettings(wxCommandEvent& event)
 	event.Skip(); 
 }
 
-SettingsDialog::SettingsDialog(Application* app, bool auto_connect) 
-	: wxDialog(nullptr, wxID_ANY, wxT("Settings"),
-	wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE)
+void SettingsDialog::Show(bool auto_connect)
 {
-	this->app = app;
+	if (!InitDialog::Show())
+		return;
 
-	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+	if (!wxXmlResource::Get()->LoadDialog(this->dialog, nullptr,
+		"SettingsDialog"))
+		wxLogError("Coudn't load SettingsDialog from resources !");
 
-	wxStaticBoxSizer* sbSizer3;
-	sbSizer3 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxT("")), wxVERTICAL);
+	this->database_choice = XRCCTRL(*dialog, "database_choice", wxChoice);
+	this->hostname_ctr = XRCCTRL(*dialog, "hostname_ctr", wxTextCtrl);
+	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);
+	this->password_ctr = XRCCTRL(*dialog, "password_ctr", wxTextCtrl);
+	this->save_button = XRCCTRL(*dialog, "save_button", wxButton);
 
-	wxBoxSizer* bSizer33;
-	bSizer33 = new wxBoxSizer(wxHORIZONTAL);
+	save_button->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
+		&SettingsDialog::SaveButtonClick, this);
 
-	m_staticText20 = new wxStaticText(sbSizer3->GetStaticBox(), wxID_ANY, wxT("Database"), wxDefaultPosition, wxDefaultSize, 0);
-	m_staticText20->Wrap(-1);
-	bSizer33->Add(m_staticText20, 0, wxALIGN_CENTER | wxALL, 5);
-
-
-	bSizer33->Add(5, 0, 1, wxEXPAND, 5);
-
-	wxString database_choiceChoices[] = { wxT("MYSQL") };
-	int database_choiceNChoices = sizeof(database_choiceChoices) / sizeof(wxString);
-	database_choice = new wxChoice(sbSizer3->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, database_choiceNChoices, database_choiceChoices, 0);
-	database_choice->SetSelection(0);
-	bSizer33->Add(database_choice, 10, wxALIGN_CENTER | wxALL, 5);
-
-
-	sbSizer3->Add(bSizer33, 1, wxEXPAND, 5);
-
-	wxBoxSizer* bSizer4;
-	bSizer4 = new wxBoxSizer(wxHORIZONTAL);
-
-	m_staticText5 = new wxStaticText(sbSizer3->GetStaticBox(), wxID_ANY, wxT("Hostname:"), wxDefaultPosition, wxDefaultSize, 0);
-	m_staticText5->Wrap(-1);
-	bSizer4->Add(m_staticText5, 0, wxALIGN_CENTER | wxALL, 5);
-
-
-	bSizer4->Add(0, 0, 1, wxEXPAND, 5);
-
-	hostname_ctr = new wxTextCtrl(sbSizer3->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	bSizer4->Add(hostname_ctr, 0, wxALIGN_CENTER | wxALL, 5);
-
-
-	sbSizer3->Add(bSizer4, 1, wxEXPAND, 5);
-
-	wxBoxSizer* bSizer5;
-	bSizer5 = new wxBoxSizer(wxHORIZONTAL);
-
-	m_staticText6 = new wxStaticText(sbSizer3->GetStaticBox(), wxID_ANY, wxT("Username:"), wxDefaultPosition, wxDefaultSize, 0);
-	m_staticText6->Wrap(-1);
-	bSizer5->Add(m_staticText6, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-
-
-	bSizer5->Add(0, 0, 1, wxEXPAND, 5);
-
-	username_ctr = new wxTextCtrl(sbSizer3->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	bSizer5->Add(username_ctr, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-
-
-	sbSizer3->Add(bSizer5, 1, wxEXPAND, 5);
-
-	wxBoxSizer* bSizer51;
-	bSizer51 = new wxBoxSizer(wxHORIZONTAL);
-
-	m_staticText61 = new wxStaticText(sbSizer3->GetStaticBox(), wxID_ANY, wxT("Password:"), wxDefaultPosition, wxDefaultSize, 0);
-	m_staticText61->Wrap(-1);
-	bSizer51->Add(m_staticText61, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-
-
-	bSizer51->Add(0, 0, 1, wxEXPAND, 5);
-
-	password_ctr = new wxTextCtrl(sbSizer3->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
-	bSizer51->Add(password_ctr, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-
-
-	sbSizer3->Add(bSizer51, 1, wxEXPAND, 5);
-
-	wxBoxSizer* bSizer6;
-	bSizer6 = new wxBoxSizer(wxHORIZONTAL);
-
-
-	bSizer6->Add(0, 0, 1, wxEXPAND, 5);
-
-	m_button7 = new wxButton(sbSizer3->GetStaticBox(), wxID_ANY, wxT("Save"), wxDefaultPosition, wxDefaultSize, 0);
-	bSizer6->Add(m_button7, 0, wxALL, 5);
-
-
-	sbSizer3->Add(bSizer6, 1, wxEXPAND, 5);
-
-
-	this->SetSizer(sbSizer3);
-	this->Layout();
-	sbSizer3->Fit(this);
-
-	this->Centre(wxBOTH);
-
-	// Connect Events
-	m_button7->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(SettingsDialog::SwapToSettings), NULL, this);
-	
 	this->Init(auto_connect);
+
+	dialog->Show();
+
 }
 
 SettingsDialog::~SettingsDialog()
 {
-	// Disconnect Events
-	m_button7->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(SettingsDialog::SwapToSettings), NULL, this);
-
+	delete database_choice,
+		hostname_ctr,
+		username_ctr,
+		password_ctr,
+		save_button;
 }

@@ -6871,8 +6871,8 @@ Write Database Object to a file
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">1280</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">1084</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">115</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">95</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">129</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">108</XPD:ATTR>
 <XPD:REF name="Model">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="nSDHX2/nKUiKAuhQG1mt2wAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="OWFudvEck0qW57jkzruR3gAA">
@@ -7456,7 +7456,7 @@ Write Database Object to a file
 <XPD:OBJ name="OwnedViews[57]" type="UMLAssociationView" guid="c3c4b1PWS0aps5HvqWuhUAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">1298,1178;1256,1228;320,1263</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">1292,1191;1256,1228;320,1263</XPD:ATTR>
 <XPD:REF name="Model">r2w4jLQiBEiXEjAyJxQ1YwAA</XPD:REF>
 <XPD:REF name="Head">cRl2wit0oUuGP4u947gpUgAA</XPD:REF>
 <XPD:REF name="Tail">XDsARzgXzEGaRlorFyB+NgAA</XPD:REF>
@@ -8988,7 +8988,7 @@ that day
 <XPD:OBJ name="OwnedViews[87]" type="UMLDependencyView" guid="rhXRtpZdNUu1kaoYG6zIewAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">1280,1166;965,1361</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">1280,1175;965,1363</XPD:ATTR>
 <XPD:REF name="Model">Y4veLJ+fAU+J21VvUb1ckgAA</XPD:REF>
 <XPD:REF name="Head">innZBY3cKE+Dtg7329pcewAA</XPD:REF>
 <XPD:REF name="Tail">XDsARzgXzEGaRlorFyB+NgAA</XPD:REF>
@@ -11719,7 +11719,7 @@ that day
 <XPD:REF name="Views[3]">KpE/r9PIxEyQwZZn2enddAAA</XPD:REF>
 <XPD:ATTR name="#ClientDependencies" type="integer">1</XPD:ATTR>
 <XPD:REF name="ClientDependencies[0]">Y4veLJ+fAU+J21VvUb1ckgAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">2</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">3</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="RkSDtX0UL0GEwoqL0ghuRwAA">
 <XPD:ATTR name="Name" type="string">Login</XPD:ATTR>
 <XPD:REF name="Owner">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
@@ -11748,20 +11748,33 @@ that day
 <XPD:REF name="BehavioralFeature">ErmNabRUrUCQR6OizyeqvwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
+<XPD:OBJ name="Operations[2]" type="UMLOperation" guid="YirzD5HQ9U+D2tPVj08+eQAA">
+<XPD:ATTR name="Name" type="string">ModifyUser</XPD:ATTR>
+<XPD:REF name="Owner">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="0XhQEIIxhUO2zRlEpDP3XAAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">bool</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">YirzD5HQ9U+D2tPVj08+eQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="U4zR0t7lGUOYAUmMa/Zn+AAA">
+<XPD:ATTR name="Name" type="string">User</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">YirzD5HQ9U+D2tPVj08+eQAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#TypedFeatures" type="integer">1</XPD:ATTR>
+<XPD:REF name="TypedFeatures[0]">Jds/asii4kit0vxdsFHuxQAA</XPD:REF>
 <XPD:ATTR name="#TypedParameters" type="integer">1</XPD:ATTR>
 <XPD:REF name="TypedParameters[0]">V1R/i1y7RUKmpHfys5uyPgAA</XPD:REF>
 <XPD:ATTR name="#Associations" type="integer">2</XPD:ATTR>
 <XPD:REF name="Associations[0]">NZSzvhUi706FK1nlwI0rFwAA</XPD:REF>
 <XPD:REF name="Associations[1]">t5TmlLxzM0iiswRUT4DOBAAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="Jds/asii4kit0vxdsFHuxQAA">
-<XPD:ATTR name="Name" type="string">username</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">string</XPD:ATTR>
-<XPD:REF name="Owner">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="dsBajaccD06gn3ya7zqpOwAA">
-<XPD:ATTR name="Name" type="string">password</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">string</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">user</XPD:ATTR>
+<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">User</XPD:ATTR>
+<XPD:REF name="Type_">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
 <XPD:REF name="Owner">OluEIHADikyxjTaXNW5mVAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>

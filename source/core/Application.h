@@ -1,6 +1,9 @@
 #pragma once
 
 #include "dal/UnitOfWork.h"
+#include "logic/Users.h"
+
+class Users;
 
 class Application
 {
@@ -13,8 +16,12 @@ public:
 
 	UnitOfWork* GetUnitOfWork();
 
+	Users* GetUsersManage();
+
 private:
-	UnitOfWork* unit_of_work;
+	UnitOfWork* unit_of_work = nullptr;
+	Users* users_manager = nullptr;
+
 	std::string title;
 	std::string version;
 

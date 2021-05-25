@@ -19,9 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\ui\dialog\RegisterDialog.h" />
-    <ClInclude Include="source\ui\dialog\LoginDialog.h" />
-    <ClInclude Include="source\ui\dialog\SettingsDialog.h" />
+    <ClInclude Include="source\ui\InitialPage.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLGroupsRepository.h" />
     <ClInclude Include="source\core\dal\GroupsRepository.h" />
     <ClInclude Include="source\core\dal\mysql\MYSQLTransactionsRepository.h" />
@@ -35,8 +33,11 @@
     <ClInclude Include="source\core\dal\UnitOfWork.h" />
     <ClInclude Include="source\core\dal\UserRepository.h" />
     <ClInclude Include="source\core\dal\TransactionsRepository.h" />
+    <ClInclude Include="source\core\logic\Users.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\ui\dialog\InitDialog.cpp" />
+    <ClCompile Include="source\ui\InitialPage.cpp" />
     <ClCompile Include="source\ui\dialog\RegisterDialog.cpp" />
     <ClCompile Include="source\ui\dialog\LoginDialog.cpp" />
     <ClCompile Include="source\ui\dialog\SettingsDialog.cpp" />
@@ -53,6 +54,7 @@
     <ClCompile Include="source\core\dal\UnitOfWork.cpp" />
     <ClCompile Include="source\core\dal\UserRepository.cpp" />
     <ClCompile Include="source\core\dal\TransactionsRepository.cpp" />
+    <ClCompile Include="source\core\logic\Users.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

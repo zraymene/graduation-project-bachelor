@@ -4,6 +4,8 @@
 
 #include "ui/MainFrame.h"
 #include "core/Application.h"
+#include "wx/xrc/xmlres.h"
+#include "ui/InitialPage.h"
 
 class Entry : public wxApp
 {
@@ -16,5 +18,7 @@ private:
 	wxLogWindow* log_windows = nullptr;
 
 	Application* application;
+
+	InitialPage* init_page;
 };
 

@@ -54,13 +54,10 @@
     <ClInclude Include="source\core\dal\mysql\MYSQLGroupsRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\ui\dialog\SettingsDialog.h">
+    <ClInclude Include="source\ui\InitialPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\ui\dialog\LoginDialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ui\dialog\RegisterDialog.h">
+    <ClInclude Include="source\core\logic\Users.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -111,6 +108,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ui\dialog\RegisterDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ui\InitialPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ui\dialog\InitDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\logic\Users.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -88,4 +88,6 @@ UnitOfWork::UnitOfWork()
 UnitOfWork::~UnitOfWork()
 {
 	delete this->database;
+	delete this->user_rep, this->persons_rep,
+		this->transactions_rep, this->groups_rep;
 }
