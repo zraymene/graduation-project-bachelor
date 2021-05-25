@@ -2,8 +2,35 @@
 
 void RegisterDialog::Register(wxCommandEvent& event)
 {
-	wxLogDebug("REGISTERS - SHEEESH");
-	event.Skip();
+	// Username musn't be empty
+	if (this->username_ctr->IsEmpty())
+	{
+		wxMessageBox("Username field is empty!",
+			"Input error",
+			wxICON_ERROR | wxOK);
+		event.Skip();
+		return;
+	}
+
+	try {
+
+		this->page->app->GetUsersManage()->RegisterUser({
+			this->username_ctr->GetValue().ToStdString(),
+			this->password_ctr->GetValue().ToStdString(),
+			});
+
+		wxMessageBox("User registered !\nYou are logged in now.",
+			"Success", wxICON_INFORMATION | wxOK);
+
+		event.Skip();
+	}
+	catch (std::exception e)
+	{
+		wxMessageBox(e.what(),
+			"Registeration Error",
+			wxICON_ERROR | wxOK);
+		event.Skip();
+	}
 }
 
 void RegisterDialog::SwapToSettings(wxCommandEvent& event)

@@ -12,9 +12,9 @@ public:
 	Users(Application* app);
 	~Users();
 	
-	bool Login(User user);
-	bool RegisterUser(User user);
-	bool ModifyUser(User user);
+	void Login(User user);
+	void RegisterUser(User user);
+	void ModifyUser(User user);
 
 	User* user = nullptr;
 

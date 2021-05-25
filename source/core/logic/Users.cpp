@@ -13,32 +13,26 @@ Users::~Users()
 	delete this->user;
 }
 
-bool Users::Login(User user)
+void Users::Login(User user)
 {
-	if (!(this->user = USER_REP->GetUser(user.username, user.password)))
-		return false;
-
-	return true;
+	this->user = USER_REP->GetUser(user.username, user.password);
 }
 
-bool Users::RegisterUser(User user)
+void Users::RegisterUser(User user)
 {
 	app->GetUnitOfWork()->Begin();
+
 	USER_REP->AddUser(user);
 
-	if (!app->GetUnitOfWork()->Commit())
-		return false;
+	app->GetUnitOfWork()->Commit();
 
-	return true;
 }
 
-bool Users::ModifyUser(User user)
+void Users::ModifyUser(User user)
 {
-	this->app->GetUnitOfWork()->Begin();
+	app->GetUnitOfWork()->Begin();
+
 	USER_REP->EditUser(user);
 
-	if (!app->GetUnitOfWork()->Commit())
-		return false;
-
-	return true;
+	app->GetUnitOfWork()->Commit();
 }

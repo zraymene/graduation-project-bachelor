@@ -30,37 +30,41 @@ void SettingsDialog::TryConnect()
 	this->save_button->Enable(false);
 
 	this->page->app->SelectUnitOfWork(db->type);
+	
+	try {
 
-	// Try to connect
-	if (!this->page->app->GetUnitOfWork()->Connect(db))
+		// Try to connect
+		this->page->app->GetUnitOfWork()->Connect(db);
+
+		// Check if database is empty
+		if (this->page->app->GetUnitOfWork()->CheckIfDatabaseEmpty())
+		{
+			this->page->ShowDialog<RegisterDialog>();
+			wxMessageBox("Database is empty !\nYou must register !",
+				"Success", wxICON_INFORMATION | wxOK);
+		}
+		else {
+			this->page->ShowDialog<LoginDialog>();
+		}
+
+		// Write database to file
+		db->WriteDataBaseToFile();
+
+		this->save_button->Enable();
+
+		this->dialog->Hide();
+	}
+	catch (std::exception e)
 	{
-		wxMessageBox("Error establishing a database connection!\
-				\nPlease verify database's informations and then click save.",
+		wxMessageBox(e.what(),
 			"Connection Error",
 			wxICON_ERROR | wxOK);
 
 		this->save_button->Enable();
 
 		delete db;
-
-		return;
 	}
 
-	// Write database to file
-	db->WriteDataBaseToFile();
-
-	// Check if database is empty
-	if (this->page->app->GetUnitOfWork()->CheckIfDatabaseEmpty())
-	{
-		this->page->ShowDialog<RegisterDialog>();
-	}
-	else {
-		this->page->ShowDialog<LoginDialog>();
-	}
-
-	this->save_button->Enable();
-
-	this->dialog->Hide();
 }
 
 void SettingsDialog::SaveButtonClick(wxCommandEvent& event)

@@ -19,7 +19,7 @@ bool MYSQLUnitOfWork::Begin()
 	{
 		wxLogDebug("#Failed to start transaction, Error : %s!",
 			mysql_error(&CON));
-		return false;
+		throw std::exception("Error starting transaction !");
 	}
 
 	return true;
@@ -35,7 +35,7 @@ bool MYSQLUnitOfWork::Commit()
 	{
 		wxLogDebug("#Failed to commit transaction, Error : %s!",
 			mysql_error(&CON));
-		return false;
+		throw std::exception("Failed to commit transaction!");
 	}
 
 	wxLogDebug("MYSQL Work commited successfuly !");
@@ -52,6 +52,7 @@ void MYSQLUnitOfWork::Abort()
 	{
 		wxLogDebug("#Failed to rollback transaction, Error : %s!",
 			mysql_error(&CON));
+		throw std::exception("Failed to rollback transaction!");
 	}
 }
 
@@ -65,7 +66,7 @@ bool MYSQLUnitOfWork::Connect(Database* database)
 	if (!mysql_init(&CON))
 	{
 		wxLogDebug("#Error while creating MYSQL Object !");
-		return false;
+		throw std::exception("Cannot create MYSQL Object !");
 	}
 
 	if (!mysql_real_connect(&CON,
@@ -78,7 +79,7 @@ bool MYSQLUnitOfWork::Connect(Database* database)
 		wxLogDebug("#Failed to connect to MYSQL database, Error : %s!",
 			mysql_error(&CON));
 
-		return false;
+		throw std::exception("Error establishing a MYSQL database connection! !");
 	}
 	
 	wxLogDebug("Connected to MYSQL databse !");
@@ -93,12 +94,8 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 	{
 		wxLogDebug("#Failed creating database, Error : %s!",
 			mysql_error(&CON));
-		return false;
+		throw std::exception("Failed to create a database!");
 	}
-
-	// Disable transactions auto commit
-	mysql_autocommit(&CON, 0);
-	
 
 	// Create table if it doesn't exists
 	std::list<std::string> table_queries {
@@ -117,9 +114,12 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 		{
 			wxLogDebug("#Failed to create table, Error : %s!",
 				mysql_error(&CON));
-			return false;
+			throw std::exception("Failed to create table!");
 		}
 	}
+
+	// Disable transactions auto commit
+	mysql_autocommit(&CON, 0);
 
 	// Get rows count from user table
 	if (mysql_query(&CON,
@@ -127,7 +127,7 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 	{
 		wxLogDebug("#Failed to retrive user table count, Error : %s!",
 			mysql_error(&CON));
-		return false;
+		throw std::exception("Failed to retrive user table count!");
 	}
 
 	MYSQL_RES* result = mysql_store_result(&CON);

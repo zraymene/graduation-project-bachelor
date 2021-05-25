@@ -13,25 +13,27 @@ void LoginDialog::Login(wxCommandEvent& event)
 		return;
 	}
 
-	if (!this->page->app->GetUsersManage()->Login({
-		this->username_ctr->GetValue().ToStdString(),
-		this->password_ctr->GetValue().ToStdString(),
-		}))
-	{
-		wxMessageBox("Error while logging in !",
-			"Login error",
-			wxICON_ERROR | wxOK);
+	try {
+		this->page->app->GetUsersManage()->Login({
+			this->username_ctr->GetValue().ToStdString(),
+			this->password_ctr->GetValue().ToStdString()
+			});
+
+		wxMessageBox("You are logged in now !",
+			"Success", wxICON_INFORMATION | wxOK);
+
+		// Swap to dashboard page
+		//
 		event.Skip();
-		return;
 	}
+	catch (std::exception e)
+	{
+		wxMessageBox(e.what(),
+			"Login Error",
+			wxICON_ERROR | wxOK);
 
-	wxMessageBox("You are loged in now !",
-		"Success", wxICON_INFORMATION | wxOK);
-	return;
-
-	// Swap to dashboard page
-	//
-	event.Skip();
+		event.Skip();
+	}
 }
 
 void LoginDialog::SwapToSettings(wxCommandEvent& event)
