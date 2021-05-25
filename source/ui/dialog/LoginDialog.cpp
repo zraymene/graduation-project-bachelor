@@ -30,7 +30,7 @@ void LoginDialog::Login(wxCommandEvent& event)
 	return;
 
 	// Swap to dashboard page
-
+	//
 	event.Skip();
 }
 
