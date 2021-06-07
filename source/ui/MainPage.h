@@ -18,7 +18,10 @@ private:
 	void AddButtonOnClick(wxCommandEvent& event);
 	void EditButtonOnClick(wxCommandEvent& event);
 	void DeleteButtonOnClick(wxCommandEvent& event);
+	
+	void OnStudentSelected(wxGridEvent& e);
 
+	void SetStudentRow(Person p, int i);
 	void PopulateStudentsTable();
 
 	wxTextCtrl* student_fname_ctr;
@@ -36,6 +39,8 @@ private:
 	wxPanel* panel;
 
 	std::vector<Person> student_list;
+	Person selected_student;
+	int selected_row;
 
 	MainPage* main;
 };
