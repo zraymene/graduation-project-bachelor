@@ -25,6 +25,8 @@ void LoginDialog::Login(wxCommandEvent& event)
 		// Swap to dashboard page
 		//
 		event.Skip();
+
+		this->page->entry->SwitchToMainPage();
 	}
 	catch (std::exception e)
 	{

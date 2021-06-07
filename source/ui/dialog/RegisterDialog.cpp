@@ -23,6 +23,8 @@ void RegisterDialog::Register(wxCommandEvent& event)
 			"Success", wxICON_INFORMATION | wxOK);
 
 		event.Skip();
+
+		this->page->entry->SwitchToMainPage();
 	}
 	catch (std::exception e)
 	{

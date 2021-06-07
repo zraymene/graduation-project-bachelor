@@ -15,8 +15,12 @@ bool Entry::OnInit()
 	log_windows = new wxLogWindow(nullptr, "Console");
 	log_windows->Show();
 	
-	this->init_page = new InitialPage(this->application);
+	// Uncomment this for release
+	this->init_page = new InitialPage(this);
 	this->init_page->ShowDialog<SettingsDialog>();
+
+	// this for debug only 
+	//this->SwitchToMainPage();
 
 	return true;
 }
@@ -24,10 +28,15 @@ bool Entry::OnInit()
 int Entry::OnExit()
 {
 	delete this->application;
-	delete this->init_page;
-
-	wxLogDebug("SHEES");
 	return 0;
+}
+
+void Entry::SwitchToMainPage()
+{
+	this->main_page = new MainPage(this->application);
+	this->main_page->Show();
+
+	delete this->init_page;
 }
 
 

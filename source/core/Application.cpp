@@ -5,6 +5,7 @@
 Application::Application()
 {
 	this->users_manager = new Users(this);
+	this->persons_manager = new PersonsManager(this);
 }
 
 Application::Application(UnitOfWork* uow)
@@ -16,6 +17,7 @@ Application::~Application()
 {
 	delete this->unit_of_work;
 	delete this->users_manager;
+	delete this->persons_manager;
 }
 
 void Application::SelectUnitOfWork(int db_type)
@@ -36,6 +38,11 @@ UnitOfWork* Application::GetUnitOfWork()
 Users* Application::GetUsersManage()
 {
 	return this->users_manager;
+}
+
+PersonsManager* Application::GetPersonsManager()
+{
+	return this->persons_manager;
 }
 
 void Application::SetUnitOfWork(UnitOfWork* uow)

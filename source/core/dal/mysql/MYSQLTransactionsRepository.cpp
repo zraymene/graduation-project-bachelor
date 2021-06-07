@@ -21,7 +21,7 @@ void MYSQLTransactionsRepository::AddTransaction(Transaction& transaction)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'INSERT TRANSACTION' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -39,14 +39,14 @@ void MYSQLTransactionsRepository::AddTransaction(Transaction& transaction)
 	{
 		wxLogDebug("#Failed to binding 'INSERT TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'INSERT TRANSACTION' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT TRANSACTION' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'INSERT TRANSACTION' statement");
 	}
 
 	// Get newly AUTO_INCREMENT  id
@@ -67,7 +67,7 @@ void MYSQLTransactionsRepository::DeleteTransaction(int id)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'DELETE TRANSACTION' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -79,14 +79,14 @@ void MYSQLTransactionsRepository::DeleteTransaction(int id)
 	{
 		wxLogDebug("#Failed to bind 'DELETE TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'DELETE TRANSACTION' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE TRANSACTION' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'DELETE TRANSACTION' statement");
 	}
 
 	wxLogDebug("Transactions deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -104,7 +104,7 @@ void MYSQLTransactionsRepository::EditTransaction(Transaction transaction)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'UPDATE TRANSACTION' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -125,21 +125,20 @@ void MYSQLTransactionsRepository::EditTransaction(Transaction transaction)
 	{
 		wxLogDebug("#Failed to bind 'UPDATE TRANSACTION' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'UPDATE TRANSACTION' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'UPDATE TRANSACTION' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'UPDATE TRANSACTION' statement");
 	}
 
 	wxLogDebug("Transactions updated: %d.", (int)mysql_stmt_affected_rows(stmt));
 
 	mysql_stmt_close(stmt);
 }
-
 
 std::vector<Transaction> MYSQLTransactionsRepository::GetTransactions()
 {
@@ -149,7 +148,8 @@ std::vector<Transaction> MYSQLTransactionsRepository::GetTransactions()
 	{
 		wxLogDebug("#Failed to retrive transactions list, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return transactions;
+		throw std::exception("Failed to retrive transactions list");
+		//return transactions;
 	}
 
 	MYSQL_RES* result = mysql_store_result(this->mysql_connection);

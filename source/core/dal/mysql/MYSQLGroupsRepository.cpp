@@ -60,7 +60,7 @@ void MYSQLGroupsRepository::AddGroup(Group& group)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'INSERT GROUP' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -91,14 +91,14 @@ void MYSQLGroupsRepository::AddGroup(Group& group)
 	{
 		wxLogDebug("#Failed to binding 'INSERT GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to binding 'INSERT GROUP' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
-		wxLogDebug("#Failed submitting 'INSERT GROUP' queries, Error : %s!",
+		wxLogDebug("#Failed to submit 'INSERT GROUP' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'INSERT GROUP' statement!");
 	}
 
 	// Get newly AUTO_INCREMENT  id
@@ -126,7 +126,7 @@ void MYSQLGroupsRepository::DeleteGroup(int id)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'DELETE GROUP' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -138,14 +138,14 @@ void MYSQLGroupsRepository::DeleteGroup(int id)
 	{
 		wxLogDebug("#Failed to bind 'DELETE GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed  to bind 'DELETE GROUP' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE GROUP' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed  to submit 'DELETE GROUP' statement!");
 	}
 
 	wxLogDebug("Group deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -167,7 +167,7 @@ void MYSQLGroupsRepository::EditGroup(Group group)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'UPDATE GROUP' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -202,14 +202,14 @@ void MYSQLGroupsRepository::EditGroup(Group group)
 	{
 		wxLogDebug("#Failed to bind 'UPDATE GROUP' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'UPDATE GROUP' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'UPDATE GROUP' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'UPDATE GROUP' statement!");
 	}
 
 	wxLogDebug("Groups updated: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -227,7 +227,7 @@ void MYSQLGroupsRepository::AddGroupLessons(Group group)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT LESSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'INSERT LESSON' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -252,14 +252,14 @@ void MYSQLGroupsRepository::AddGroupLessons(Group group)
 	{
 		wxLogDebug("#Failed to binding 'INSERT LESSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'INSERT LESSON' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT LESSON' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'INSERT LESSON' statement!");
 	}
 
 	mysql_stmt_close(stmt);
@@ -275,7 +275,7 @@ void MYSQLGroupsRepository::DeleteGroupLessons(int id)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'DELETE LESSONS' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -287,14 +287,14 @@ void MYSQLGroupsRepository::DeleteGroupLessons(int id)
 	{
 		wxLogDebug("#Failed to bind 'DELETE LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'DELETE LESSONS' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE LESSONS' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'DELETE LESSONS' statement!");
 	}
 
 	wxLogDebug("Lessons deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -312,7 +312,7 @@ void MYSQLGroupsRepository::EditGroupLessons(Group group)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'UPDATE LESSONS' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -337,14 +337,14 @@ void MYSQLGroupsRepository::EditGroupLessons(Group group)
 	{
 		wxLogDebug("#Failed to bind 'UPDATE LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'UPDATE LESSONS' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'UPDATE LESSONS' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'UPDATE LESSONS' statement!");
 	}
 
 	wxLogDebug("Lessons updated: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -362,7 +362,7 @@ void MYSQLGroupsRepository::AddAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'INSERT ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -387,14 +387,14 @@ void MYSQLGroupsRepository::AddAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'INSERT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'INSERT ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'INSERT ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absence added!, Date = %s.", absence.date);
@@ -412,7 +412,7 @@ void MYSQLGroupsRepository::EditAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'UPDATE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -436,14 +436,14 @@ void MYSQLGroupsRepository::EditAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'UPDATE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'UPDATE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'UPDATE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'UPDATE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences updated: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -461,7 +461,7 @@ void MYSQLGroupsRepository::DeleteAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'DELETE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -481,14 +481,14 @@ void MYSQLGroupsRepository::DeleteAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'DELETE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'DELETE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -514,7 +514,7 @@ void MYSQLGroupsRepository::DeleteAbsences(int id, bool student_absence)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'DELETE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -526,14 +526,14 @@ void MYSQLGroupsRepository::DeleteAbsences(int id, bool student_absence)
 	{
 		wxLogDebug("#Failed to bind 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'DELETE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'DELETE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -549,7 +549,8 @@ std::vector<Group> MYSQLGroupsRepository::GetGroups()
 	{
 		wxLogDebug("#Failed to retrive groups list, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return groups;
+		throw std::exception("Failed to retrive groups list!");
+		//return groups;
 	}
 
 	MYSQL_RES* result = mysql_store_result(this->mysql_connection);
@@ -598,7 +599,8 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group ,Person* per
 	{
 		wxLogDebug("#Failed to prepare 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return absences;
+		throw std::exception("Failed to prepare 'SELECT ABSENCE' statement");
+		//return absences;
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -610,14 +612,16 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group ,Person* per
 	{
 		wxLogDebug("#Failed to bind 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return absences;
+		throw std::exception("Failed to bind 'SELECT ABSENCE' statement");
+		//return absences;
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'SELECT ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return absences;
+		throw std::exception("Failed to submit 'SELECT ABSENCE' statement");
+		//return absences;
 	}
 	// ------------------------------
 
@@ -650,14 +654,16 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group ,Person* per
 	{
 		wxLogDebug("#Failed to bind result 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return absences;
+		throw std::exception("Failed to bind result 'SELECT ABSENCE' statement");
+		//return absences;
 	}
 
 	if (mysql_stmt_store_result(stmt))
 	{
 		wxLogDebug("#Failed to store result 'SELECT ABSENCE', Error : %s!",
 			mysql_error(this->mysql_connection));
-		return absences;
+		throw std::exception("Failed to store result 'SELECT ABSENCE' statement");
+		//return absences;
 	}
 
 	int rows_num = mysql_stmt_num_rows(stmt);
@@ -697,7 +703,7 @@ void MYSQLGroupsRepository::GetGroupLessons(Group& group)
 	{
 		wxLogDebug("#Failed to prepare 'SELECT LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to prepare 'SELECT LESSONS' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -709,14 +715,14 @@ void MYSQLGroupsRepository::GetGroupLessons(Group& group)
 	{
 		wxLogDebug("#Failed to bind 'SELECT LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind 'SELECT LESSONS' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'SELECT LESSONS' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to submit 'SELECT LESSONS' statement");
 	}
 	// ------------------------------
 
@@ -738,14 +744,14 @@ void MYSQLGroupsRepository::GetGroupLessons(Group& group)
 	{
 		wxLogDebug("#Failed to bind result 'SELECT LESSONS' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to bind result 'SELECT LESSONS' statement");
 	}
 
 	if (mysql_stmt_store_result(stmt))
 	{
 		wxLogDebug("#Failed to store result 'SELECT LESSONS', Error : %s!",
 			mysql_error(this->mysql_connection));
-		return;
+		throw std::exception("Failed to result 'SELECT LESSONS' statement");
 	}
 	
 	wxLogDebug("[%s] Statement Fetch return %d ", 

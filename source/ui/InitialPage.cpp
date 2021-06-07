@@ -4,9 +4,10 @@
 
 #define XRC_PATH "rc/entry.xrc"
 
-InitialPage::InitialPage(Application* app)
+InitialPage::InitialPage(Entry* entry)
 {
-	this->app = app;
+	this->entry = entry;
+	this->app = entry->application;
 
 	if (!wxXmlResource::Get()->Load(XRC_PATH))
 		wxLogError("Coudn't load XRC resources !");
@@ -14,7 +15,7 @@ InitialPage::InitialPage(Application* app)
 
 InitialPage::~InitialPage()
 {
-	if (wxXmlResource::Get()->Unload(XRC_PATH))
+	if (!wxXmlResource::Get()->Unload(XRC_PATH))
 		wxLogError("Entry XRC resources unloaded!");
 
 }

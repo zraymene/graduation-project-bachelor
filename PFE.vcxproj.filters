@@ -21,9 +21,6 @@
     <ClInclude Include="source\Entry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\ui\MainFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\core\dal\UnitOfWork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,15 +57,18 @@
     <ClInclude Include="source\core\logic\Users.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\ui\MainPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\logic\PersonsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\core\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Entry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ui\MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\core\dal\UnitOfWork.cpp">
@@ -117,6 +117,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\core\logic\Users.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ui\panels\StudentsPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ui\MainPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\logic\PersonsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,7 +8,7 @@ class Application;
 class Users
 {
 public:
-	Users();
+
 	Users(Application* app);
 	~Users();
 	

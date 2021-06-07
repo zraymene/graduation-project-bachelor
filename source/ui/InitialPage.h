@@ -3,7 +3,9 @@
 
 #include "wx/wx.h"
 #include "wx/xrc/xmlres.h"
+#include "../Entry.h"
 
+class Entry;
 class InitialPage;
 
 class InitDialog {
@@ -84,8 +86,9 @@ class InitialPage
 public:
 
 	Application* app;
+	Entry* entry;
 
-	InitialPage(Application* app);
+	InitialPage(Entry* entry);
 	~InitialPage();
 
 	template<class T>
