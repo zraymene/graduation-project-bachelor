@@ -17,8 +17,10 @@ public:
 	~PersonsManager();
 
 	std::vector<Person> GetStudentsList();
+	std::vector<Person> GetTeachersList();
 	std::vector<Group> GetStudentGroupsEnrolledIn(int id);
 	std::vector<StudentAbsense> GetStudentAbsense(int id);
+	std::vector<Group> GetTeacherGroups(int id);
 
 
 	void RegisterStudent(Person* student);

@@ -18,6 +18,11 @@ std::vector<Person> PersonsManager::GetStudentsList()
 	return PERSON_REP->GetPersons();
 }
 
+std::vector<Person> PersonsManager::GetTeachersList()
+{
+	return PERSON_REP->GetPersons(false);
+}
+
 std::vector<Group> PersonsManager::GetStudentGroupsEnrolledIn(int id)
 {
 	std::vector<Group> g_tmp = GROUPS_REP->GetGroups();
@@ -68,6 +73,23 @@ std::vector<StudentAbsense> PersonsManager::GetStudentAbsense(int id)
 	}
 
 	return sa;
+}
+
+std::vector<Group> PersonsManager::GetTeacherGroups(int id)
+{
+	std::vector<Group> g_tmp = GROUPS_REP->GetGroups();
+	std::vector<Group>::iterator g_iter;
+	std::vector<Group> g;
+
+	for (g_iter = g_tmp.begin(); g_iter < g_tmp.end(); g_iter++)
+	{
+		if ((*g_iter).teacher_id == id)
+		{
+			g.push_back((*g_iter));
+		}
+	}
+	
+	return g;
 }
 
 void PersonsManager::RegisterStudent(Person* student)

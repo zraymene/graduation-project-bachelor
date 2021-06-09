@@ -15,7 +15,11 @@ MainPage::MainPage(Application* app)
 		"MainFrame")))
 		wxLogError("Coudn't load Main Frame from resources !");
 
-	this->student_panel = new StudentsPanel(this);
+	this->students_panel = new StudentsPanel(this);
+	this->teachers_panel = new TeachersPanel(this);
+
+	this->PrepareNotebookHeader();
+
 }
 
 MainPage::~MainPage()
@@ -23,14 +27,16 @@ MainPage::~MainPage()
 	if (wxXmlResource::Get()->Unload(XRC_PATH))
 		wxLogError("Entry XRC resources unloaded!");
 
-	delete student_panel;
-
+	delete students_panel,
+			teachers_panel;
 }
 
 void MainPage::Show()
 {
 	this->frame->Show();
-	this->student_panel->PrepareGrids();
+
+	this->students_panel->PrepareGrids();
+	this->teachers_panel->PrepareGrids();
 }
 
 void MainPage::StyleGrid(wxGrid* grid, int height )
@@ -68,4 +74,15 @@ void MainPage::StyleGrid(wxGrid* grid, int height )
 		wxFont{ 10, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL }
 	);
 	grid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
+}
+
+void MainPage::PrepareNotebookHeader()
+{
+	this->notebook = XRCCTRL(*frame, "m_notebook1", wxNotebook);
+
+	this->notebook->SetPageText(0, "Dashboard");
+	this->notebook->SetPageText(1, "Students");
+	this->notebook->SetPageText(2, "Teachers");
+	this->notebook->SetPageText(3, "Groups");
+	this->notebook->SetPageText(4, "Transactions");
 }

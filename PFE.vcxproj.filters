@@ -134,5 +134,8 @@
     <ClCompile Include="source\core\dal\mysql\MYSQLAbsenceRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\ui\panels\TeachersPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

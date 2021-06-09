@@ -85,7 +85,6 @@ void StudentsPanel::EditButtonOnClick(wxCommandEvent& event)
 
 void StudentsPanel::DeleteButtonOnClick(wxCommandEvent& event)
 {
-
 	int answer = wxMessageBox("Delete student?", "Confirm",
 		                           wxYES_NO, nullptr);
 	if (answer != wxYES)
@@ -119,6 +118,8 @@ void StudentsPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 void StudentsPanel::OnStudentSelected(wxGridEvent& e)
 {
+	this->ResetControls();
+
 	this->selected_student = this->student_list.at(e.GetRow());
 	this->selected_row = e.GetRow();
 
@@ -244,13 +245,13 @@ void StudentsPanel::ResetControls()
 	this->delete_btn->Enable(0);
 
 	// Reset secondary grids
-	if (this->student_group_grid->GetNumberRows() > 1)
+	if (this->student_group_grid->GetNumberRows() > 0)
 	{
 		this->student_group_grid->DeleteRows(0, this->student_group_grid->GetNumberRows());
 		this->student_group_grid->ForceRefresh();
 	}
 
-	if (this->student_absence_grid->GetNumberRows() > 1)
+	if (this->student_absence_grid->GetNumberRows() > 0)
 	{
 		this->student_absence_grid->DeleteRows(0, this->student_absence_grid->GetNumberRows());
 		this->student_absence_grid->ForceRefresh();
@@ -286,6 +287,4 @@ void StudentsPanel::PrepareGrids()
 	this->student_absence_grid->SetColLabelValue(0, "Group's Name");
 	this->student_absence_grid->SetColLabelValue(1, "Date");
 	MainPage::StyleGrid(this->student_absence_grid);
-
-
 }

@@ -60,6 +60,7 @@
     <ClCompile Include="source\core\dal\TransactionsRepository.cpp" />
     <ClCompile Include="source\core\logic\Users.cpp" />
     <ClCompile Include="source\ui\panels\StudentsPanel.cpp" />
+    <ClCompile Include="source\ui\panels\TeachersPanel.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
