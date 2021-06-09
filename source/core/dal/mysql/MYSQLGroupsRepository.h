@@ -19,6 +19,11 @@ public:
 	void DeleteAbsence(Absence absence); 
 	void DeleteAbsences(int id, bool student_absence = false);
 
+	void AddEnrollment(int group_id, int student_id);
+	void DeleteEnrollment(int group_id, int student_id);
+	void DeleteAllEnrollments(int id, bool is_group = true);
+	std::vector<Enrollment> GetEnrollments(int id, bool is_group = true);
+
 	std::vector<Group> GetGroups();
 	std::vector<Absence> GetAbsence(Group* group = nullptr,
 		Person* person = nullptr);

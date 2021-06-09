@@ -37,6 +37,8 @@
     <ClInclude Include="source\core\logic\Users.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\core\dal\mysql\MYSQLAbsenceRepository.cpp" />
+    <ClCompile Include="source\core\dal\mysql\MYSQLEnrollmentsRepository.cpp" />
     <ClCompile Include="source\core\logic\PersonsManager.cpp" />
     <ClCompile Include="source\ui\MainPage.cpp" />
     <ClCompile Include="source\ui\dialog\InitDialog.cpp" />

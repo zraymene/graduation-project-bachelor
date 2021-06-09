@@ -23,5 +23,5 @@ void InitDialog::Close(bool hide)
 	if (hide)
 		this->dialog->Hide();
 	else
-		this->Close();
+		this->dialog->Destroy();
 }

@@ -128,5 +128,11 @@
     <ClCompile Include="source\core\logic\PersonsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\core\dal\mysql\MYSQLEnrollmentsRepository.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\dal\mysql\MYSQLAbsenceRepository.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

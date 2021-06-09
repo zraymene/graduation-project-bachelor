@@ -102,10 +102,11 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 		"CREATE TABLE IF NOT EXISTS `school_app`.`student` ( `id` INT NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(255) NOT NULL , `last_name` VARCHAR(255) NOT NULL , `phone` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
 		"CREATE TABLE IF NOT EXISTS `school_app`.`teacher` ( `id` INT NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(255) NOT NULL , `last_name` VARCHAR(255) NOT NULL , `phone` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
 		"CREATE TABLE IF NOT EXISTS `school_app`.`transaction` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `amount` DOUBLE NOT NULL , `date` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
-		"CREATE TABLE IF NOT EXISTS `school_app`.`absence` ( `student_id` INT NOT NULL , `group_id` INT NOT NULL , `date` TIMESTAMP NOT NULL , `type` BOOLEAN NOT NULL ) ENGINE = InnoDB;",
+		"CREATE TABLE IF NOT EXISTS `school_app`.`absence` ( `student_id` INT NOT NULL , `group_id` INT NOT NULL , `date` TIMESTAMP NOT NULL , `type` BOOLEAN NOT NULL, FOREIGN KEY(`student_id`) REFERENCES `student`(`id`), FOREIGN KEY(`group_id`) REFERENCES `group`(`id`) ) ENGINE = InnoDB;",
 		"CREATE TABLE IF NOT EXISTS `school_app`.`group` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `teacher_id` INT NOT NULL , `price` DOUBLE NOT NULL , `school_percentage` FLOAT NOT NULL , `teacher_percentage` FLOAT NOT NULL , `lessons_per_week` TINYINT NOT NULL , `teacher_payed_times` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
 		"CREATE TABLE IF NOT EXISTS `school_app`.`lesson` ( `group_id` INT NOT NULL , `saturday` VARCHAR(20) NOT NULL , `sunday` VARCHAR(20) NOT NULL , `monday` VARCHAR(20) NOT NULL , `tudesday` VARCHAR(20) NOT NULL , `wednesday` VARCHAR(20) NOT NULL , `thrusday` VARCHAR(20) NOT NULL , `friday` VARCHAR(20) NOT NULL ) ENGINE = InnoDB;",
-		"CREATE TABLE IF NOT EXISTS `school_app`.`user` ( `username` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;"
+		"CREATE TABLE IF NOT EXISTS `school_app`.`user` ( `username` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;",
+		"CREATE TABLE IF NOT EXISTS `school_app`.`enrollment` ( `student_id` INT NOT NULL, `group_id` INT NOT NULL , `date` TIMESTAMP NOT NULL , FOREIGN KEY(`student_id`) REFERENCES `student`(`id`), FOREIGN KEY(`group_id`) REFERENCES `group`(`id`)) ENGINE = InnoDB;"
 	};
 
 	for (auto const& query : table_queries)
@@ -120,6 +121,8 @@ bool MYSQLUnitOfWork::CheckIfDatabaseEmpty()
 
 	// Disable transactions auto commit
 	mysql_autocommit(&CON, 0);
+	// Disable checking forign key
+	mysql_query(&CON, "SET FOREIGN_KEY_CHECKS=0;");
 
 	// Get rows count from user table
 	if (mysql_query(&CON,

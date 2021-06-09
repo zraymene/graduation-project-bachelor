@@ -5,6 +5,17 @@
 
 #include "PersonsRepository.h"
 
+class Enrollment {
+public:
+	unsigned int student_id;
+	unsigned int group_id;
+	std::string date; // Format ex : 2013-08-05 18:19:03
+
+	Enrollment();
+	Enrollment(int student_id, int group_id, std::string date);
+};
+
+
 class Absence {
 public:
 	unsigned int student_id;
@@ -56,6 +67,7 @@ public:
 
 	virtual void EditGroupLessons(Group group) = 0;
 
+	// Absence
 	virtual void AddAbsence(Absence absence) = 0;
 	virtual void EditAbsence(Absence absence) = 0;
 	virtual void DeleteAbsence(Absence absence) = 0;
@@ -65,6 +77,13 @@ public:
 	virtual std::vector<Group> GetGroups() = 0;
 	virtual std::vector<Absence> GetAbsence(Group* group = nullptr,
 		Person* person = nullptr) = 0;
+
+	// Enrollment
+	virtual void AddEnrollment(int group_id, int student_id) = 0;
+	virtual void DeleteEnrollment(int group_id, int student_id) = 0;
+	virtual void DeleteAllEnrollments(int id, bool is_group = true) = 0;
+	virtual std::vector<Enrollment> GetEnrollments(int id, bool is_group = true) = 0;
+
 
 	// Return lessons array in args instead of returning it.
 	virtual void GetGroupLessons(Group& group) = 0;

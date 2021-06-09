@@ -1,7 +1,13 @@
 #pragma once
 #include "../Application.h"
 
-class Application;
+class Application; 
+
+struct StudentAbsense
+{
+	Group group;
+	Absence absense;
+};
 
 class PersonsManager
 {
@@ -11,6 +17,9 @@ public:
 	~PersonsManager();
 
 	std::vector<Person> GetStudentsList();
+	std::vector<Group> GetStudentGroupsEnrolledIn(int id);
+	std::vector<StudentAbsense> GetStudentAbsense(int id);
+
 
 	void RegisterStudent(Person* student);
 	void RegisterTeacher(Person* teacher);

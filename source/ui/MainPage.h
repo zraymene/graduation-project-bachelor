@@ -23,6 +23,9 @@ private:
 
 	void SetStudentRow(Person p, int i);
 	void PopulateStudentsTable();
+	void PopulateStudentGroups();
+	void PopulateStudentAbsence();
+	void ResetControls();
 
 	wxTextCtrl* student_fname_ctr;
 	wxTextCtrl* student_lname_ctr;

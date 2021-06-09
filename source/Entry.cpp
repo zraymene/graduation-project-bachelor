@@ -9,7 +9,7 @@ wxIMPLEMENT_APP(Entry);
 bool Entry::OnInit()
 {
 	this->application = new Application();
-
+	
 	wxXmlResource::Get()->InitAllHandlers();
 
 	log_windows = new wxLogWindow(nullptr, "Console");

@@ -18,5 +18,11 @@ InitialPage::~InitialPage()
 	if (!wxXmlResource::Get()->Unload(XRC_PATH))
 		wxLogError("Entry XRC resources unloaded!");
 
+	this->login_dialog->Close();
+
+	delete this->settings_dialog;
+	delete this->login_dialog;
+	delete this->register_dialog;
+
 }
 

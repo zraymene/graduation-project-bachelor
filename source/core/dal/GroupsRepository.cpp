@@ -60,3 +60,14 @@ Absence::Absence(int student_id, int group_id, std::string date, bool type)
 	this->date = date;
 	this->type = type;
 }
+
+Enrollment::Enrollment()
+{
+}
+
+Enrollment::Enrollment(int student_id, int group_id, std::string date)
+{
+	this->student_id = student_id;
+	this->group_id = group_id;
+	this->date = date;
+}
