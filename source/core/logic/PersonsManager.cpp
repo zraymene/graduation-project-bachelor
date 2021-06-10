@@ -4,6 +4,8 @@
 #define TRANSACTIONS_REP this->app->GetUnitOfWork()->GetTransactionsRepository()
 #define GROUPS_REP this->app->GetUnitOfWork()->GetGroupsRepository()
 
+std::vector<Group> teacher_groups;
+
 PersonsManager::PersonsManager(Application* app)
 {
 	this->app = app;
@@ -88,7 +90,7 @@ std::vector<Group> PersonsManager::GetTeacherGroups(int id)
 			g.push_back((*g_iter));
 		}
 	}
-	
+	teacher_groups = g;
 	return g;
 }
 
@@ -136,6 +138,8 @@ void PersonsManager::DeleteStudent(int id)
 {
 	this->app->GetUnitOfWork()->Begin();
 	PERSON_REP->DeletePerson(id);
+	GROUPS_REP->DeleteAbsences(id, true);
+	GROUPS_REP->DeleteAllEnrollments(id, false);
 	this->app->GetUnitOfWork()->Commit();
 }
 
@@ -143,6 +147,17 @@ void PersonsManager::DeleteTeacher(int id)
 {
 	this->app->GetUnitOfWork()->Begin();
 	PERSON_REP->DeletePerson(id, false);
+	
+	// Delete all groups associated to the teacher
+	std::vector<Group>::iterator g_iter;
+	for (g_iter = teacher_groups.begin(); g_iter < teacher_groups.end(); g_iter++)
+	{
+		if ((*g_iter).teacher_id == id)
+		{
+			GROUPS_REP->DeleteGroup((*g_iter).id);
+		}
+	}
+
 	this->app->GetUnitOfWork()->Commit();
 }
 
