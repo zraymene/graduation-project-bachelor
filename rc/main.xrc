@@ -1,1141 +1,1173 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
-	<object class="wxFrame" name="MainFrame">
-		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
-		<size>1024,768</size>
-		<title>Main</title>
-		<centered>1</centered>
-		<aui_managed>0</aui_managed>
-		<object class="wxNotebook" name="m_notebook1">
-			<style>wxNB_FIXEDWIDTH|wxNB_NOPAGETHEME</style>
-			<object class="notebookpage">
-				<label>a page</label>
-				<selected>0</selected>
-				<object class="wxPanel" name="dashboard_tab">
-					<style>wxTAB_TRAVERSAL</style>
-				</object>
-			</object>
-			<object class="notebookpage">
-				<label>a page</label>
-				<selected>0</selected>
-				<object class="wxPanel" name="students_tab">
-					<style>wxTAB_TRAVERSAL</style>
-					<object class="wxBoxSizer">
-						<orient>wxHORIZONTAL</orient>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxStaticBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<label>Students table:</label>
-								<object class="sizeritem">
-									<option>0</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxGrid" name="students_grid" />
-								</object>
-							</object>
-						</object>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL</flag>
-							<border>5</border>
-							<object class="wxBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxVERTICAL</orient>
-										<label>Student&apos;s informations:</label>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2">
-														<label>First name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="student_fname_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText21">
-														<label>Last name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="student_lname_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText22">
-														<label>Phone:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="spacer">
-													<option>1</option>
-													<flag>wxEXPAND</flag>
-													<border>5</border>
-													<size>19,0</size>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="student_phone_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticLine" name="m_staticline1">
-												<style>wxLI_HORIZONTAL</style>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="add_student_button">
-														<label>Add</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="edit_student_button">
-														<enabled>0</enabled>
-														<label>Edit</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="delete_student_button">
-														<enabled>0</enabled>
-														<label>Delete</label>
-														<default>0</default>
-													</object>
-												</object>
-											</object>
-										</object>
-									</object>
-								</object>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxBoxSizer">
-										<minsize>-1,500</minsize>
-										<orient>wxVERTICAL</orient>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticBoxSizer">
-												<orient>wxVERTICAL</orient>
-												<label>Groups student enrolled in:</label>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxGrid" name="student_group_grid" />
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticBoxSizer">
-												<orient>wxVERTICAL</orient>
-												<label>Student&apos;s absence:</label>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxGrid" name="student_absence_grid" />
-												</object>
-											</object>
-										</object>
-									</object>
-								</object>
-							</object>
-						</object>
-					</object>
-				</object>
-			</object>
-			<object class="notebookpage">
-				<label>a page</label>
-				<selected>0</selected>
-				<object class="wxPanel" name="teachers_tab">
-					<style>wxTAB_TRAVERSAL</style>
-					<object class="wxBoxSizer">
-						<orient>wxHORIZONTAL</orient>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxStaticBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<label>Teachers table :</label>
-								<object class="sizeritem">
-									<option>0</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxGrid" name="teachers_grid" />
-								</object>
-							</object>
-						</object>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL</flag>
-							<border>5</border>
-							<object class="wxBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxVERTICAL</orient>
-										<label>Teacher&apos;s informations :</label>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText23">
-														<label>First name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="teacher_fname_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText211">
-														<label>Last name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="teacher_lname_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText221">
-														<label>Phone:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="spacer">
-													<option>1</option>
-													<flag>wxEXPAND</flag>
-													<border>5</border>
-													<size>19,0</size>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="teacher_phone_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticLine" name="m_staticline11">
-												<style>wxLI_HORIZONTAL</style>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="add_teacher_button">
-														<label>Add</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="edit_teacher_button">
-														<enabled>0</enabled>
-														<label>Edit</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="delete_teacher_button">
-														<enabled>0</enabled>
-														<label>Delete</label>
-														<default>0</default>
-													</object>
-												</object>
-											</object>
-										</object>
-									</object>
-								</object>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxVERTICAL</orient>
-										<label>Teaching groups :</label>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxEXPAND|wxTOP</flag>
-											<border>5</border>
-											<object class="wxGrid" name="teacher_groups_grid" />
-										</object>
-									</object>
-								</object>
-							</object>
-						</object>
-					</object>
-				</object>
-			</object>
-			<object class="notebookpage">
-				<label>a page</label>
-				<selected>0</selected>
-				<object class="wxPanel" name="group_tab">
-					<style>wxTAB_TRAVERSAL</style>
-					<object class="wxBoxSizer">
-						<orient>wxHORIZONTAL</orient>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxStaticBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<label>Groups table :</label>
-								<object class="sizeritem">
-									<option>0</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxGrid" name="groups_grid" />
-								</object>
-							</object>
-						</object>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxVERTICAL</orient>
-										<label>Group&apos;s informations :</label>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText231">
-														<label>Name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="group_name_ctr">
-														<value></value>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2111">
-														<label>Teacher:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxComboBox" name="group_teacher_combo">
-														<value>ZR AYMENE</value>
-														<content />
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_LEFT|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2311">
-														<label>Teacher Percentage:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="group_teacher_per_ctr">
-														<value></value>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="group_teacher_perfdfdfd">
-														<label>School Percentage:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="group_school_per_ctr">
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText22111">
-														<label>Price:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="group_price_ctr">
-														<value></value>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="group_schoolper_ctr1">
-														<label>Lessons/Week:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="group_lessonsperweek_ctr">
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticLine" name="m_staticline111">
-												<style>wxLI_HORIZONTAL</style>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText221111">
-														<label>Saturday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_saturday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2211111">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_saturday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="group_schoolper_ctr11">
-														<label>Sunday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_sunday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText22111111">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_sunday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2211113">
-														<label>Monday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_monday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText22111113">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_monday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="group_schoolper_ctr116">
-														<label>Tuesday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_tuesday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText221111112">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_tuesday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText22111131">
-														<label>Wednesday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_wednesday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText221111131">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_wednesday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="group_schoolper_ctr1161">
-														<label>Thursday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_thursday_start_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2211111121">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_thursday_end_spin">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText221111311">
-														<label>Friday:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_saturday_start_spin211">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2211111311">
-														<label>to</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
-													<border>5</border>
-													<object class="wxSpinCtrl" name="group_saturday_end_spin211">
-														<style>wxSP_ARROW_KEYS</style>
-														<value>0</value>
-														<min>0</min>
-														<max>23</max>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxEXPAND | wxALL</flag>
-											<border>5</border>
-											<object class="wxStaticLine" name="m_staticline1111">
-												<style>wxLI_HORIZONTAL</style>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="add_group_button">
-														<label>Add</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="edit_group_button">
-														<enabled>0</enabled>
-														<label>Edit</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="delete_group_button">
-														<enabled>0</enabled>
-														<label>Delete</label>
-														<default>0</default>
-													</object>
-												</object>
-											</object>
-										</object>
-									</object>
-								</object>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<minsize>-1,255</minsize>
-										<orient>wxVERTICAL</orient>
-										<label>Group&apos;s members:</label>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxEXPAND|wxTOP</flag>
-											<border>5</border>
-											<object class="wxGrid" name="group_members_grid" />
-										</object>
-									</object>
-								</object>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxHORIZONTAL</orient>
-										<label>Enroll student:</label>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxStaticText" name="m_staticText114">
-												<label>Student:</label>
-												<wrap>-1</wrap>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxComboBox" name="group_enroll_student_combo">
-												<value>Combo!</value>
-												<content />
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxButton" name="group_enroll_student_button">
-												<label>Enroll</label>
-												<default>0</default>
-											</object>
-										</object>
-									</object>
-								</object>
-							</object>
-						</object>
-					</object>
-				</object>
-			</object>
-			<object class="notebookpage">
-				<label>a page</label>
-				<selected>1</selected>
-				<object class="wxPanel" name="expenses_tab">
-					<style>wxTAB_TRAVERSAL</style>
-					<object class="wxBoxSizer">
-						<orient>wxHORIZONTAL</orient>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL|wxEXPAND</flag>
-							<border>5</border>
-							<object class="wxStaticBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<label>Transactions table:</label>
-								<object class="sizeritem">
-									<option>0</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxGrid" name="transactions_grid" />
-								</object>
-							</object>
-						</object>
-						<object class="sizeritem">
-							<option>1</option>
-							<flag>wxALL</flag>
-							<border>5</border>
-							<object class="wxBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxALL|wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxStaticBoxSizer">
-										<orient>wxVERTICAL</orient>
-										<label>Transaction&apos;s informations :</label>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText232">
-														<label>Name:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="transaction_name_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALIGN_CENTER|wxALL</flag>
-													<border>5</border>
-													<object class="wxStaticText" name="m_staticText2112">
-														<label>Amount:</label>
-														<wrap>-1</wrap>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL|wxEXPAND</flag>
-													<border>5</border>
-													<object class="wxTextCtrl" name="transaction_amount_ctr">
-														<size>300,-1</size>
-														<value></value>
-													</object>
-												</object>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>0</option>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxStaticLine" name="m_staticline112">
-												<style>wxLI_HORIZONTAL</style>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<option>1</option>
-											<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-											<border>5</border>
-											<object class="wxBoxSizer">
-												<orient>wxHORIZONTAL</orient>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="add_transaction_button">
-														<label>Add</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="edit_transaction_button">
-														<enabled>0</enabled>
-														<label>Edit</label>
-														<default>0</default>
-													</object>
-												</object>
-												<object class="sizeritem">
-													<option>0</option>
-													<flag>wxALL</flag>
-													<border>5</border>
-													<object class="wxButton" name="delete_transaction_button">
-														<enabled>0</enabled>
-														<label>Delete</label>
-														<default>0</default>
-													</object>
-												</object>
-											</object>
-										</object>
-									</object>
-								</object>
-							</object>
-						</object>
-					</object>
-				</object>
-			</object>
-		</object>
-	</object>
+  <object class="wxFrame" name="MainFrame">
+    <style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+    <size>1024,768</size>
+    <title>Main</title>
+    <centered>1</centered>
+    <aui_managed>0</aui_managed>
+    <object class="wxNotebook" name="m_notebook1">
+      <style>wxNB_FIXEDWIDTH|wxNB_NOPAGETHEME</style>
+      <object class="notebookpage">
+        <label>a page</label>
+        <selected>0</selected>
+        <object class="wxPanel" name="dashboard_tab">
+          <style>wxTAB_TRAVERSAL</style>
+        </object>
+      </object>
+      <object class="notebookpage">
+        <label>a page</label>
+        <selected>1</selected>
+        <object class="wxPanel" name="students_tab">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+              <object class="wxStaticBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <label>Students table:</label>
+                <object class="sizeritem">
+                  <option>0</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxGrid" name="students_grid" />
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL</flag>
+              <border>5</border>
+              <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <label>Student&apos;s informations:</label>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2">
+                            <label>First name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="student_fname_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText21">
+                            <label>Last name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="student_lname_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText22">
+                            <label>Phone:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="spacer">
+                          <option>1</option>
+                          <flag>wxEXPAND</flag>
+                          <border>5</border>
+                          <size>19,0</size>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="student_phone_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticLine" name="m_staticline1">
+                        <style>wxLI_HORIZONTAL</style>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="add_student_button">
+                            <label>Add</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="edit_student_button">
+                            <enabled>0</enabled>
+                            <label>Edit</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="delete_student_button">
+                            <enabled>0</enabled>
+                            <label>Delete</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxBoxSizer">
+                    <minsize>-1,500</minsize>
+                    <orient>wxVERTICAL</orient>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>Groups student enrolled in:</label>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxGrid" name="student_group_grid" />
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticBoxSizer">
+                        <orient>wxVERTICAL</orient>
+                        <label>Student&apos;s absence:</label>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxGrid" name="student_absence_grid" />
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="notebookpage">
+        <label>a page</label>
+        <selected>0</selected>
+        <object class="wxPanel" name="teachers_tab">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+              <object class="wxStaticBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <label>Teachers table :</label>
+                <object class="sizeritem">
+                  <option>0</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxGrid" name="teachers_grid" />
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL</flag>
+              <border>5</border>
+              <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <label>Teacher&apos;s informations :</label>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText23">
+                            <label>First name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="teacher_fname_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText211">
+                            <label>Last name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="teacher_lname_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText221">
+                            <label>Phone:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="spacer">
+                          <option>1</option>
+                          <flag>wxEXPAND</flag>
+                          <border>5</border>
+                          <size>19,0</size>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="teacher_phone_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticLine" name="m_staticline11">
+                        <style>wxLI_HORIZONTAL</style>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="add_teacher_button">
+                            <label>Add</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="edit_teacher_button">
+                            <enabled>0</enabled>
+                            <label>Edit</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="delete_teacher_button">
+                            <enabled>0</enabled>
+                            <label>Delete</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <label>Teaching groups :</label>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxEXPAND|wxTOP</flag>
+                      <border>5</border>
+                      <object class="wxGrid" name="teacher_groups_grid" />
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="notebookpage">
+        <label>a page</label>
+        <selected>0</selected>
+        <object class="wxPanel" name="group_tab">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+              <object class="wxStaticBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <label>Groups table :</label>
+                <object class="sizeritem">
+                  <option>0</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxGrid" name="groups_grid" />
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+              <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <label>Group&apos;s informations :</label>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText231">
+                            <label>Name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="group_name_ctr">
+                            <value></value>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2111">
+                            <label>Teacher:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxComboBox" name="group_teacher_combo">
+                            <value></value>
+                            <content />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_LEFT|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2311">
+                            <label>Teacher Percentage:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="group_teacher_per_ctr">
+                            <value></value>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="group_teacher_perfdfdfd">
+                            <label>School Percentage:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="group_school_per_ctr">
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText22111">
+                            <label>Price:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="group_price_ctr">
+                            <value></value>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="group_schoolper_ctr1">
+                            <label>Lessons/Week:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="group_lessonsperweek_ctr">
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticLine" name="m_staticline111">
+                        <style>wxLI_HORIZONTAL</style>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText221111">
+                            <label>Saturday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_0">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2211111">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_1">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="group_schoolper_ctr11">
+                            <label>Sunday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_2">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText22111111">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_3">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2211113">
+                            <label>Monday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_4">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText22111113">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_5">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="group_schoolper_ctr116">
+                            <label>Tuesday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_6">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText221111112">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_7">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText22111131">
+                            <label>Wednesday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_8">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText221111131">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_9">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="group_schoolper_ctr1161">
+                            <label>Thursday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_10">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2211111121">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_11">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText221111311">
+                            <label>Friday:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_12">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER_VERTICAL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2211111311">
+                            <label>to</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxTimePickerCtrl" name="group_time_13">
+                            <style>wxTP_DEFAULT</style>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxEXPAND | wxALL</flag>
+                      <border>5</border>
+                      <object class="wxStaticLine" name="m_staticline1111">
+                        <style>wxLI_HORIZONTAL</style>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="add_group_button">
+                            <label>Add</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="edit_group_button">
+                            <enabled>0</enabled>
+                            <label>Edit</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="delete_group_button">
+                            <enabled>0</enabled>
+                            <label>Delete</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <minsize>-1,255</minsize>
+                    <orient>wxVERTICAL</orient>
+                    <label>Group&apos;s members:</label>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxEXPAND|wxTOP</flag>
+                      <border>5</border>
+                      <object class="wxGrid" name="group_members_grid" />
+                    </object>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxBoxSizer">
+                    <orient>wxHORIZONTAL</orient>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <label>Enroll student:</label>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText114">
+                            <label>Student:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxComboBox" name="group_enroll_student_combo">
+                            <value>Select Student</value>
+                            <content />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="group_enroll_student_button">
+                            <enabled>0</enabled>
+                            <label>Enroll</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <label>Disenroll member:</label>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText1141">
+                            <label>Student:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxComboBox" name="group_members_combo">
+                            <value>Select Student</value>
+                            <content />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="group_disenroll_member_button">
+                            <enabled>0</enabled>
+                            <label>Disenroll</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object class="notebookpage">
+        <label>a page</label>
+        <selected>0</selected>
+        <object class="wxPanel" name="expenses_tab">
+          <style>wxTAB_TRAVERSAL</style>
+          <object class="wxBoxSizer">
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL|wxEXPAND</flag>
+              <border>5</border>
+              <object class="wxStaticBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <label>Transactions table:</label>
+                <object class="sizeritem">
+                  <option>0</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxGrid" name="transactions_grid" />
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <option>1</option>
+              <flag>wxALL</flag>
+              <border>5</border>
+              <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND</flag>
+                  <border>5</border>
+                  <object class="wxStaticBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <label>Transaction&apos;s informations :</label>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText232">
+                            <label>Name:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="transaction_name_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALIGN_CENTER|wxALL</flag>
+                          <border>5</border>
+                          <object class="wxStaticText" name="m_staticText2112">
+                            <label>Amount:</label>
+                            <wrap>-1</wrap>
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL|wxEXPAND</flag>
+                          <border>5</border>
+                          <object class="wxTextCtrl" name="transaction_amount_ctr">
+                            <size>300,-1</size>
+                            <value></value>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>0</option>
+                      <flag>wxALL|wxEXPAND</flag>
+                      <border>5</border>
+                      <object class="wxStaticLine" name="m_staticline112">
+                        <style>wxLI_HORIZONTAL</style>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <option>1</option>
+                      <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                      <border>5</border>
+                      <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="add_transaction_button">
+                            <label>Add</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="edit_transaction_button">
+                            <enabled>0</enabled>
+                            <label>Edit</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                        <object class="sizeritem">
+                          <option>0</option>
+                          <flag>wxALL</flag>
+                          <border>5</border>
+                          <object class="wxButton" name="delete_transaction_button">
+                            <enabled>0</enabled>
+                            <label>Delete</label>
+                            <default>0</default>
+                            <markup>0</markup>
+                            <bitmap />
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
 </resource>

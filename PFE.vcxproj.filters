@@ -63,6 +63,12 @@
     <ClInclude Include="source\core\logic\PersonsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\core\logic\GroupsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\logic\TransactionsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\core\Application.cpp">
@@ -141,6 +147,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ui\panels\TransactionsPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\logic\GroupsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\logic\TransactionsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

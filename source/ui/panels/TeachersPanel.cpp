@@ -9,8 +9,6 @@ TeachersPanel::TeachersPanel(MainPage* main)
 {
 	this->main = main;
 
-	this->main = main;
-
 	this->teacher_fname_ctr = XRCCTRL(*(this->main->frame), "teacher_fname_ctr", wxTextCtrl);
 	this->teacher_lname_ctr = XRCCTRL(*(this->main->frame), "teacher_lname_ctr", wxTextCtrl);
 	this->teacher_phone_ctr = XRCCTRL(*(this->main->frame), "teacher_phone_ctr", wxTextCtrl);
@@ -208,10 +206,12 @@ void TeachersPanel::SetTeacherRow(Person p, int i)
 void TeachersPanel::PopulateTeachersTable()
 {
 	this->teachers_grid->CreateGrid(this->teachers_list.size(), 3);
+	std::vector<Person>::iterator iter;
+	int j = 0;
 
-	for (int i = 0; i < this->teachers_list.size(); i++)
+	for (iter = this->teachers_list.begin(); iter < this->teachers_list.end(); iter++, j++)
 	{
-		this->SetTeacherRow(this->teachers_list.at(i), i);
+		this->SetTeacherRow((*iter), j);
 	}
 }
 

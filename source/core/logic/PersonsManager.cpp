@@ -122,6 +122,11 @@ void PersonsManager::RegisterTeacher(Person* teacher)
 
 void PersonsManager::UpdateStudent(Person student)
 {
+	if (student.first_name.empty())
+		throw std::exception("Student first name is empty!");
+	if (student.last_name.empty())
+		throw std::exception("Student last name is empty!");
+
 	this->app->GetUnitOfWork()->Begin();
 	PERSON_REP->EditPerson(student);
 	this->app->GetUnitOfWork()->Commit();
@@ -129,6 +134,11 @@ void PersonsManager::UpdateStudent(Person student)
 
 void PersonsManager::UpdateTeacher(Person teacher)
 {
+	if (teacher.first_name.empty())
+		throw std::exception("Teacher first name is empty!");
+	if (teacher.last_name.empty())
+		throw std::exception("Teacher last name is empty!");
+
 	this->app->GetUnitOfWork()->Begin();
 	PERSON_REP->EditPerson(teacher, false);
 	this->app->GetUnitOfWork()->Commit();

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\core\logic\GroupsManager.h" />
     <ClInclude Include="source\core\logic\PersonsManager.h" />
     <ClInclude Include="source\ui\MainPage.h" />
     <ClInclude Include="source\ui\InitialPage.h" />
@@ -35,8 +36,10 @@
     <ClInclude Include="source\core\dal\UserRepository.h" />
     <ClInclude Include="source\core\dal\TransactionsRepository.h" />
     <ClInclude Include="source\core\logic\Users.h" />
+    <ClInclude Include="source\core\logic\TransactionsManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\core\logic\GroupsManager.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLAbsenceRepository.cpp" />
     <ClCompile Include="source\core\dal\mysql\MYSQLEnrollmentsRepository.cpp" />
     <ClCompile Include="source\core\logic\PersonsManager.cpp" />
@@ -63,6 +66,7 @@
     <ClCompile Include="source\ui\panels\StudentsPanel.cpp" />
     <ClCompile Include="source\ui\panels\TeachersPanel.cpp" />
     <ClCompile Include="source\ui\panels\TransactionsPanel.cpp" />
+    <ClCompile Include="source\core\logic\TransactionsManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

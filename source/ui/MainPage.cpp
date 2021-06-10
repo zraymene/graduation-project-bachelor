@@ -8,6 +8,10 @@ MainPage::MainPage(Application* app)
 {
 	this->app = app;
 
+	// Prepare prices ctr validator
+	this->prices_validator = new wxTextValidator(wxFILTER_NUMERIC);
+
+
 	if (!wxXmlResource::Get()->Load(XRC_PATH))
 		wxLogError("Coudn't load XRC resources !");
 
@@ -17,6 +21,8 @@ MainPage::MainPage(Application* app)
 
 	this->students_panel = new StudentsPanel(this);
 	this->teachers_panel = new TeachersPanel(this);
+	this->groups_panel = new GroupsPanel(this);
+	this->transactions_panel = new TransactionsPanel(this);
 
 	this->PrepareNotebookHeader();
 
@@ -28,7 +34,10 @@ MainPage::~MainPage()
 		wxLogError("Entry XRC resources unloaded!");
 
 	delete students_panel,
-			teachers_panel;
+		teachers_panel,
+		groups_panel,
+		transactions_panel,
+		prices_validator;
 }
 
 void MainPage::Show()
@@ -37,6 +46,8 @@ void MainPage::Show()
 
 	this->students_panel->PrepareGrids();
 	this->teachers_panel->PrepareGrids();
+	this->groups_panel->PrepareGrids();
+	this->transactions_panel->PrepareGrids();
 }
 
 void MainPage::StyleGrid(wxGrid* grid, int height )
@@ -62,7 +73,7 @@ void MainPage::StyleGrid(wxGrid* grid, int height )
 	for (int i = 0; i < grid->GetNumberCols(); i++)
 	{
 		grid->SetColSize(i, col_size);
-		grid->DisableColResize(i);
+	//	grid->DisableColResize(i);
 	}
 
 	grid->SetMargins(0 - wxSYS_VSCROLL_X - 30, 0);

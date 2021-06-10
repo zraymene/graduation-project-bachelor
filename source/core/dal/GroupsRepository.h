@@ -38,6 +38,10 @@ public:
 	static std::string FormateDate(Lesson lesson);
 	static void DeformateDate(Lesson& lesson, std::string full_date);
 
+	// Get hour and minute from string time
+	// Ex : 19:30 => hour = 19, minute = 30
+	static void getTime(std::string time, int* hour, int* minute);
+
 };
 
 class Group {
@@ -71,7 +75,10 @@ public:
 	virtual void AddAbsence(Absence absence) = 0;
 	virtual void EditAbsence(Absence absence) = 0;
 	virtual void DeleteAbsence(Absence absence) = 0;
+
 	// Delete all group's or student's absence
+	// • student_absence : false => Delete all group's absences
+	// • student_absence : true => Delete all studen's absences
 	virtual void DeleteAbsences(int id, bool student_absence = false) = 0;
 
 	virtual std::vector<Group> GetGroups() = 0;

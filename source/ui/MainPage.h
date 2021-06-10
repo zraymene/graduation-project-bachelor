@@ -4,6 +4,7 @@
 #include "wx/grid.h"
 #include "../core/Application.h"
 #include "wx/notebook.h"
+#include "wx/timectrl.h"
 
 class MainPage;
 
@@ -97,9 +98,14 @@ private:
 	void EditButtonOnClick(wxCommandEvent& event);
 	void DeleteButtonOnClick(wxCommandEvent& event);
 	void EnrollButtonOnClick(wxCommandEvent& event);
+	void DisenrollButtonOnClick(wxCommandEvent& event);
 	void OnGroupSelected(wxGridEvent& e);
+	void OnTeacherComboBoxDropDown(wxCommandEvent& e);
+	void OnStudentComboBoxDropDown(wxCommandEvent& e);
+	void OnMembersComboBoxDropDown(wxCommandEvent& e);
 
 	void SetGroupRow(Group p, int i);
+	void SetMemberRow(Person p, int i);
 	void PopulateGroupsTable();
 	void PopulateGroupMembersTable();
 	void ResetControls();
@@ -112,11 +118,12 @@ private:
 
 	wxComboBox* group_teacher_combo;
 	wxComboBox* group_enroll_student_combo;
+	wxComboBox* group_members_combo;
 	
 	// 7/Week
 	// First : start time of the lesson
 	// Second: end time of the lesson
-	wxSpinCtrl* group_lessons_time[14];
+	wxTimePickerCtrl* group_lessons_time[14];
 
 	wxGrid* groups_grid;
 	wxGrid* group_members_grid;
@@ -125,7 +132,9 @@ private:
 	wxButton* edit_btn;
 	wxButton* delete_btn;
 	wxButton* enroll_btn;
+	wxButton* disenroll_btn;
 
+	std::vector<Person> memebers;
 	std::vector<Group> groups_list;
 	Group selected_group;
 	int selected_row;
@@ -162,7 +171,7 @@ private:
 	wxButton* delete_btn;
 
 	std::vector<Transaction> transaction_list;
-	Person selected_transaction;
+	Transaction selected_transaction;
 	int selected_row;
 
 	MainPage* main;
@@ -180,6 +189,7 @@ public:
 	Application* app;
 	wxFrame* frame = nullptr;
 	wxNotebook* notebook;
+	wxTextValidator *prices_validator;
 
 	static void StyleGrid(wxGrid* grid, int height = 0);
 
@@ -189,5 +199,7 @@ private:
 
 	StudentsPanel* students_panel = nullptr;
 	TeachersPanel* teachers_panel = nullptr;
+	GroupsPanel* groups_panel = nullptr;
+	TransactionsPanel* transactions_panel = nullptr;
 };
 

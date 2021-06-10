@@ -6,6 +6,8 @@ Application::Application()
 {
 	this->users_manager = new Users(this);
 	this->persons_manager = new PersonsManager(this);
+	this->groups_manager = new GroupsManager(this);
+	this->transactions_manager = new TransactionsManager(this);
 }
 
 Application::Application(UnitOfWork* uow)
@@ -15,9 +17,12 @@ Application::Application(UnitOfWork* uow)
 
 Application::~Application()
 {
-	delete this->unit_of_work;
-	delete this->users_manager;
-	delete this->persons_manager;
+	delete this->unit_of_work,
+		this->users_manager,
+		this->persons_manager,
+		this->groups_manager,
+		this->transactions_manager;
+
 }
 
 void Application::SelectUnitOfWork(int db_type)
@@ -43,6 +48,16 @@ Users* Application::GetUsersManage()
 PersonsManager* Application::GetPersonsManager()
 {
 	return this->persons_manager;
+}
+
+GroupsManager* Application::GetGroupsManager()
+{
+	return this->groups_manager;
+}
+
+TransactionsManager* Application::GetTransactionsManager()
+{
+	return this->transactions_manager;
 }
 
 void Application::SetUnitOfWork(UnitOfWork* uow)

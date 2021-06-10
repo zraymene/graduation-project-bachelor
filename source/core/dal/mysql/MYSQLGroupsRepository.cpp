@@ -191,6 +191,8 @@ void MYSQLGroupsRepository::EditGroup(Group group)
 
 	wxLogDebug("Groups updated: %d.", (int)mysql_stmt_affected_rows(stmt));
 
+	this->EditGroupLessons(group);
+
 	mysql_stmt_close(stmt);
 }
 

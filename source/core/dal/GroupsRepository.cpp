@@ -31,6 +31,13 @@ void Lesson::DeformateDate(Lesson& lesson, std::string full_date)
 	lesson.end = full_date.substr(pos + 1, full_date.length());
 }
 
+void Lesson::getTime(std::string time, int* hour, int* minute)
+{
+	size_t pos = time.find(':');
+	*hour = std::atoi(time.substr(0, pos).c_str());
+	*minute = std::atoi(time.substr(pos + 1, time.length()).c_str());
+}
+
 Group::Group()
 {
 };
