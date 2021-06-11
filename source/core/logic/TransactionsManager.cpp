@@ -14,9 +14,9 @@ TransactionsManager::~TransactionsManager()
 void TransactionsManager::AddTransaction(Transaction* transaction)
 {
 	if ((*transaction).name.empty())
-		throw std::exception("Transaction's name is empty!");
+		throw std::runtime_error("Transaction's name is empty!");
 	if ((*transaction).amount == 0)
-		throw std::exception("Transaction's amount mustn't be null!");
+		throw std::runtime_error("Transaction's amount mustn't be null!");
 
 	this->app->GetUnitOfWork()->Begin();
 	TRANS_REP->AddTransaction(*transaction);
@@ -26,9 +26,9 @@ void TransactionsManager::AddTransaction(Transaction* transaction)
 void TransactionsManager::EditTransaction(Transaction transaction)
 {
 	if (transaction.name.empty())
-		throw std::exception("Transaction's name is empty!");
+		throw std::runtime_error("Transaction's name is empty!");
 	if (transaction.amount == 0)
-		throw std::exception("Transaction's amount mustn't be null!");
+		throw std::runtime_error("Transaction's amount mustn't be null!");
 
 	this->app->GetUnitOfWork()->Begin();
 	TRANS_REP->EditTransaction(transaction);

@@ -16,15 +16,15 @@ GroupsManager::~GroupsManager()
 void GroupsManager::RegisterGroup(Group* group)
 {
 	if ((*group).name.empty())
-		throw std::exception("Group's name is empty!");
+		throw std::runtime_error("Group's name is empty!");
 	if ((*group).price <= 0)
-		throw std::exception("Group's price must be set !");
+		throw std::runtime_error("Group's price must be set !");
 	if ((*group).school_percentage <= 0)
-		throw std::exception("School's percentage must be set !");
+		throw std::runtime_error("School's percentage must be set !");
 	if ((*group).teacher_percentage < 0)
-		throw std::exception("Teachers's percentage is invalid!");
+		throw std::runtime_error("Teachers's percentage is invalid!");
 	if ((*group).lessons_per_week <= 0)
-		throw std::exception("Group's lessons per week must be set !");
+		throw std::runtime_error("Group's lessons per week must be set !");
 
 	this->app->GetUnitOfWork()->Begin();
 	GROUPS_REP->AddGroup(*group);

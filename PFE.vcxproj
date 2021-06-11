@@ -78,6 +78,9 @@
   <ItemGroup>
     <Image Include="assets\icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="cmake\CMakeList.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

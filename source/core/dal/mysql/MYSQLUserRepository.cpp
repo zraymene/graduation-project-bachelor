@@ -16,7 +16,7 @@ void MYSQLUserRepository::AddUser(User user)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'INSERT USER' statement!");
+		throw std::runtime_error("Failed to prepare 'INSERT USER' statement!");
 	}
 	 
 	memset(bind, 0, sizeof(bind));
@@ -36,14 +36,14 @@ void MYSQLUserRepository::AddUser(User user)
 	{
 		wxLogDebug("#Failed to binding 'INSERT USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'INSERT USER' statement!");
+		throw std::runtime_error("Failed to bind 'INSERT USER' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT USER' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'INSERT USER' statement!");
+		throw std::runtime_error("Failed to submit 'INSERT USER' statement!");
 	}
 
 	wxLogDebug("User added.");
@@ -60,7 +60,7 @@ void MYSQLUserRepository::EditUser(User user)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'UPDATE USER' statement!");
+		throw std::runtime_error("Failed to prepare 'UPDATE USER' statement!");
 	}
 	
 	memset(bind, 0, sizeof(bind));
@@ -80,14 +80,14 @@ void MYSQLUserRepository::EditUser(User user)
 	{
 		wxLogDebug("#Failed to binding 'UPDATE USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'UPDATE USER' statement!");
+		throw std::runtime_error("Failed to bind 'UPDATE USER' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'UPDATE USER' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'UPDATE USER' statement!");
+		throw std::runtime_error("Failed to submit 'UPDATE USER' statement!");
 	}
 
 	wxLogDebug("Users updated: %d.",(int)mysql_stmt_affected_rows(stmt));
@@ -104,7 +104,7 @@ User *MYSQLUserRepository::GetUser(std::string username, std::string password)
 	{
 		wxLogDebug("#Failed to prepare 'SELECT USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'SELECT USER' statement!");
+		throw std::runtime_error("Failed to prepare 'SELECT USER' statement!");
 	}
 	
 	memset(bind, 0, sizeof(bind));
@@ -124,20 +124,20 @@ User *MYSQLUserRepository::GetUser(std::string username, std::string password)
 	{
 		wxLogDebug("#Failed to binding 'SELECT USER' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'SELECT USER' statement!");
+		throw std::runtime_error("Failed to prepare 'SELECT USER' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'SELECT USER' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submitting 'SELECT USER' statement!");
+		throw std::runtime_error("Failed to submitting 'SELECT USER' statement!");
 	}
 
 	if (mysql_stmt_fetch(stmt) == MYSQL_NO_DATA)
 	{
 		wxLogDebug("#User not found !");
-		throw std::exception("Authentication failed!");
+		throw std::runtime_error("Authentication failed!");
 	}
 
 	wxLogDebug("Found user!");

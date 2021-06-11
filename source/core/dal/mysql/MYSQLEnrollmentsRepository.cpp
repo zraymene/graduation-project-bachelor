@@ -25,7 +25,7 @@ void MYSQLGroupsRepository::AddEnrollment(int group_id, int student_id)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'INSERT ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to prepare 'INSERT ENROLLMENT' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -40,14 +40,14 @@ void MYSQLGroupsRepository::AddEnrollment(int group_id, int student_id)
 	{
 		wxLogDebug("#Failed to binding 'INSERT ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'INSERT ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to bind 'INSERT ENROLLMENT' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT ENROLLMENT' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'INSERT ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to submit 'INSERT ENROLLMENT' statement!");
 	}
 
 	wxLogDebug("Enrollment added!");
@@ -65,7 +65,7 @@ void MYSQLGroupsRepository::DeleteEnrollment(int group_id, int student_id)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to prepare 'DELETE ENROLLMENT' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -80,14 +80,14 @@ void MYSQLGroupsRepository::DeleteEnrollment(int group_id, int student_id)
 	{
 		wxLogDebug("#Failed to binding 'DELETE ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to bind 'DELETE ENROLLMENT' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ENROLLMENT' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to submit 'DELETE ENROLLMENT' statement!");
 	}
 
 	wxLogDebug("Enrollment deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -114,7 +114,7 @@ void MYSQLGroupsRepository::DeleteAllEnrollments(int id, bool is_group)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to prepare 'DELETE ENROLLMENT' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -126,14 +126,14 @@ void MYSQLGroupsRepository::DeleteAllEnrollments(int id, bool is_group)
 	{
 		wxLogDebug("#Failed to binding 'DELETE ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to bind 'DELETE ENROLLMENT' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ENROLLMENT' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'DELETE ENROLLMENT' statement!");
+		throw std::runtime_error("Failed to submit 'DELETE ENROLLMENT' statement!");
 	}
 
 	wxLogDebug("Enrollment deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -159,7 +159,7 @@ std::vector<Enrollment> MYSQLGroupsRepository::GetEnrollments(int id, bool is_gr
 	{
 		wxLogDebug("#Failed to prepare 'SELECT ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'SELECT ENROLLMENT' statement");
+		throw std::runtime_error("Failed to prepare 'SELECT ENROLLMENT' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -171,7 +171,7 @@ std::vector<Enrollment> MYSQLGroupsRepository::GetEnrollments(int id, bool is_gr
 	{
 		wxLogDebug("#Failed to bind 'SELECT ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'SELECT ENROLLMENT' statement");
+		throw std::runtime_error("Failed to bind 'SELECT ENROLLMENT' statement");
 		//return absences;
 	}
 
@@ -179,7 +179,7 @@ std::vector<Enrollment> MYSQLGroupsRepository::GetEnrollments(int id, bool is_gr
 	{
 		wxLogDebug("#Failed to submit 'SELECT ENROLLMENT' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'SELECT ENROLLMENT' statement");
+		throw std::runtime_error("Failed to submit 'SELECT ENROLLMENT' statement");
 		//return absences;
 	}
 	// ------------------------------
@@ -209,14 +209,14 @@ std::vector<Enrollment> MYSQLGroupsRepository::GetEnrollments(int id, bool is_gr
 	{
 		wxLogDebug("#Failed to bind result 'SELECT ENROLLMENT' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind result 'SELECT ENROLLMENT' statement");
+		throw std::runtime_error("Failed to bind result 'SELECT ENROLLMENT' statement");
 	}
 
 	if (mysql_stmt_store_result(stmt))
 	{
 		wxLogDebug("#Failed to store result 'SELECT ENROLLMENT', Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to store result 'SELECT ENROLLMENT' statement");
+		throw std::runtime_error("Failed to store result 'SELECT ENROLLMENT' statement");
 	}
 
 	int rows_num = mysql_stmt_num_rows(stmt);

@@ -27,7 +27,7 @@ void MYSQLGroupsRepository::AddAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'INSERT ABSENCE' statement!");
+		throw std::runtime_error("Failed to prepare 'INSERT ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -52,14 +52,14 @@ void MYSQLGroupsRepository::AddAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'INSERT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'INSERT ABSENCE' statement!");
+		throw std::runtime_error("Failed to bind 'INSERT ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'INSERT ABSENCE' statement!");
+		throw std::runtime_error("Failed to submit 'INSERT ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absence added!, Date = %s.", absence.date);
@@ -77,7 +77,7 @@ void MYSQLGroupsRepository::EditAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'UPDATE ABSENCE' statement!");
+		throw std::runtime_error("Failed to prepare 'UPDATE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -101,14 +101,14 @@ void MYSQLGroupsRepository::EditAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'UPDATE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'UPDATE ABSENCE' statement!");
+		throw std::runtime_error("Failed to bind 'UPDATE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'UPDATE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'UPDATE ABSENCE' statement!");
+		throw std::runtime_error("Failed to submit 'UPDATE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences updated: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -126,7 +126,7 @@ void MYSQLGroupsRepository::DeleteAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to prepare 'DELETE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -146,14 +146,14 @@ void MYSQLGroupsRepository::DeleteAbsence(Absence absence)
 	{
 		wxLogDebug("#Failed to binding 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to bind 'DELETE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to submit 'DELETE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -179,7 +179,7 @@ void MYSQLGroupsRepository::DeleteAbsences(int id, bool student_absence)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to prepare 'DELETE ABSENCE' statement!");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -191,14 +191,14 @@ void MYSQLGroupsRepository::DeleteAbsences(int id, bool student_absence)
 	{
 		wxLogDebug("#Failed to bind 'DELETE ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to bind 'DELETE ABSENCE' statement!");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed to submit 'DELETE ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'DELETE ABSENCE' statement!");
+		throw std::runtime_error("Failed to submit 'DELETE ABSENCE' statement!");
 	}
 
 	wxLogDebug("Absences deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -229,7 +229,7 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group, Person* per
 	{
 		wxLogDebug("#Failed to prepare 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'SELECT ABSENCE' statement");
+		throw std::runtime_error("Failed to prepare 'SELECT ABSENCE' statement");
 		//return absences;
 	}
 
@@ -242,7 +242,7 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group, Person* per
 	{
 		wxLogDebug("#Failed to bind 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'SELECT ABSENCE' statement");
+		throw std::runtime_error("Failed to bind 'SELECT ABSENCE' statement");
 		//return absences;
 	}
 
@@ -250,7 +250,7 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group, Person* per
 	{
 		wxLogDebug("#Failed to submit 'SELECT ABSENCE' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'SELECT ABSENCE' statement");
+		throw std::runtime_error("Failed to submit 'SELECT ABSENCE' statement");
 		//return absences;
 	}
 	// ------------------------------
@@ -284,7 +284,7 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group, Person* per
 	{
 		wxLogDebug("#Failed to bind result 'SELECT ABSENCE' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind result 'SELECT ABSENCE' statement");
+		throw std::runtime_error("Failed to bind result 'SELECT ABSENCE' statement");
 		//return absences;
 	}
 
@@ -292,7 +292,7 @@ std::vector<Absence> MYSQLGroupsRepository::GetAbsence(Group* group, Person* per
 	{
 		wxLogDebug("#Failed to store result 'SELECT ABSENCE', Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to store result 'SELECT ABSENCE' statement");
+		throw std::runtime_error("Failed to store result 'SELECT ABSENCE' statement");
 		//return absences;
 	}
 

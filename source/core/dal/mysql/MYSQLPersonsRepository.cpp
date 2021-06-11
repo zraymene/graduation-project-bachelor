@@ -37,7 +37,7 @@ void MYSQLPersonsRepository::AddPerson(Person& person, bool is_student)
 	{
 		wxLogDebug("#Failed to prepare 'INSERT PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'INSERT PERSON' statement");
+		throw std::runtime_error("Failed to prepare 'INSERT PERSON' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -62,14 +62,14 @@ void MYSQLPersonsRepository::AddPerson(Person& person, bool is_student)
 	{
 		wxLogDebug("#Failed to binding 'INSERT PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'INSERT PERSON' statement");
+		throw std::runtime_error("Failed to bind 'INSERT PERSON' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'INSERT PERSON' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'INSERT PERSON' statement");
+		throw std::runtime_error("Failed to submit 'INSERT PERSON' statement");
 	}
 
 	// Get newly AUTO_INCREMENT  id
@@ -97,7 +97,7 @@ void MYSQLPersonsRepository::EditPerson(Person person, bool is_student)
 	{
 		wxLogDebug("#Failed to prepare 'UPDATE PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'UPDATE PERSON' statement");
+		throw std::runtime_error("Failed to prepare 'UPDATE PERSON' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -125,14 +125,14 @@ void MYSQLPersonsRepository::EditPerson(Person person, bool is_student)
 	{
 		wxLogDebug("#Failed to binding 'UPDATE PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'UPDATE PERSON' statement");
+		throw std::runtime_error("Failed to bind 'UPDATE PERSON' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'UPDATE PERSON' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'UPDATE PERSON' statement");
+		throw std::runtime_error("Failed to submit 'UPDATE PERSON' statement");
 	}
 
 	wxLogDebug("Persons updated: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -157,7 +157,7 @@ void MYSQLPersonsRepository::DeletePerson(int id, bool is_student)
 	{
 		wxLogDebug("#Failed to prepare 'DELETE PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to prepare 'DELETE PERSON' statement");
+		throw std::runtime_error("Failed to prepare 'DELETE PERSON' statement");
 	}
 
 	memset(bind, 0, sizeof(bind));
@@ -169,14 +169,14 @@ void MYSQLPersonsRepository::DeletePerson(int id, bool is_student)
 	{
 		wxLogDebug("#Failed to bind 'DELETE PERSON' statement, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to bind 'DELETE PERSON' statement");
+		throw std::runtime_error("Failed to bind 'DELETE PERSON' statement");
 	}
 
 	if (mysql_stmt_execute(stmt))
 	{
 		wxLogDebug("#Failed submitting 'DELETE PERSON' queries, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to submit 'DELETE PERSON' statement");
+		throw std::runtime_error("Failed to submit 'DELETE PERSON' statement");
 	}
 
 	wxLogDebug("Persons deleted: %d.", (int)mysql_stmt_affected_rows(stmt));
@@ -199,7 +199,7 @@ std::vector<Person> MYSQLPersonsRepository::GetPersons(bool is_student)
 	{
 		wxLogDebug("#Failed to retrive persons list, Error : %s!",
 			mysql_error(this->mysql_connection));
-		throw std::exception("Failed to retrive persons list");
+		throw std::runtime_error("Failed to retrive persons list");
 		//return persons;
 	}
 

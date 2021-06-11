@@ -125,7 +125,7 @@ void GroupsPanel::AddButtonOnClick(wxCommandEvent& event)
 	try {
 
 		if (this->group_teacher_combo->GetValue().empty())
-			throw std::exception("You must set a teacher !");
+			throw std::runtime_error("You must set a teacher !");
 
 		Group g;
 		g.name = this->group_name_ctr->GetValue().ToStdString();
@@ -194,7 +194,7 @@ void GroupsPanel::EditButtonOnClick(wxCommandEvent& event)
 	try {
 
 		if (this->group_teacher_combo->GetValue().empty())
-			throw std::exception("You must set a teacher !");
+			throw std::runtime_error("You must set a teacher !");
 
 		selected_group.name = this->group_name_ctr->GetValue().ToStdString();
 		selected_group.price = std::atof(this->group_price_ctr->GetValue());
@@ -292,7 +292,7 @@ void GroupsPanel::EnrollButtonOnClick(wxCommandEvent& event)
 	try {
 
 		if (this->group_enroll_student_combo->GetValue().empty())
-			throw std::exception("You must select a student !");
+			throw std::runtime_error("You must select a student !");
 
 		unsigned int person_id;
 
@@ -331,7 +331,7 @@ void GroupsPanel::DisenrollButtonOnClick(wxCommandEvent& event)
 	try {
 
 		if (this->group_members_combo->GetValue().empty())
-			throw std::exception("You must select a student !");
+			throw std::runtime_error("You must select a student !");
 
 		unsigned int person_id;
 
