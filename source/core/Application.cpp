@@ -8,6 +8,7 @@ Application::Application()
 	this->persons_manager = new PersonsManager(this);
 	this->groups_manager = new GroupsManager(this);
 	this->transactions_manager = new TransactionsManager(this);
+	this->statistics_manager = new StatisticsManager(this);
 }
 
 Application::Application(UnitOfWork* uow)
@@ -21,7 +22,8 @@ Application::~Application()
 		this->users_manager,
 		this->persons_manager,
 		this->groups_manager,
-		this->transactions_manager;
+		this->transactions_manager,
+		this->statistics_manager;
 
 }
 
@@ -58,6 +60,11 @@ GroupsManager* Application::GetGroupsManager()
 TransactionsManager* Application::GetTransactionsManager()
 {
 	return this->transactions_manager;
+}
+
+StatisticsManager* Application::GetStatisticsManager()
+{
+	return this->statistics_manager;
 }
 
 void Application::SetUnitOfWork(UnitOfWork* uow)

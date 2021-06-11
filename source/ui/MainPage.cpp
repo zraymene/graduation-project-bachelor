@@ -7,10 +7,8 @@
 MainPage::MainPage(Application* app)
 {
 	this->app = app;
-
 	// Prepare prices ctr validator
 	this->prices_validator = new wxTextValidator(wxFILTER_NUMERIC);
-
 
 	if (!wxXmlResource::Get()->Load(XRC_PATH))
 		wxLogError("Coudn't load XRC resources !");
@@ -23,6 +21,7 @@ MainPage::MainPage(Application* app)
 	this->teachers_panel = new TeachersPanel(this);
 	this->groups_panel = new GroupsPanel(this);
 	this->transactions_panel = new TransactionsPanel(this);
+	this->dashboard_panel = new DashboardPanel(this);
 
 	this->PrepareNotebookHeader();
 
@@ -37,12 +36,15 @@ MainPage::~MainPage()
 		teachers_panel,
 		groups_panel,
 		transactions_panel,
-		prices_validator;
+		prices_validator,
+		dashboard_panel;
 }
 
 void MainPage::Show()
 {
 	this->frame->Show();
+
+	this->dashboard_panel->UpdateDashboard();
 
 	this->students_panel->PrepareGrids();
 	this->teachers_panel->PrepareGrids();
@@ -87,9 +89,26 @@ void MainPage::StyleGrid(wxGrid* grid, int height )
 	grid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
 }
 
+void MainPage::OnNotePageChanged(wxBookCtrlEvent& e)
+{
+	switch (e.GetSelection())
+	{
+		// Transactions page is selected
+		case 4:
+			// Refresh transactions panel
+			this->transactions_panel->PopulateTransactionsTable();
+		case wxNOT_FOUND:
+			break;
+	}
+
+	e.Skip();
+}
+
 void MainPage::PrepareNotebookHeader()
 {
 	this->notebook = XRCCTRL(*frame, "m_notebook1", wxNotebook);
+	this->notebook->Bind(wxEVT_NOTEBOOK_PAGE_CHANGED,
+		&MainPage::OnNotePageChanged, this);
 
 	this->notebook->SetPageText(0, "Dashboard");
 	this->notebook->SetPageText(1, "Students");

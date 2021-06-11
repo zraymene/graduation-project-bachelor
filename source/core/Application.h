@@ -5,11 +5,13 @@
 #include "logic/PersonsManager.h"
 #include "logic/GroupsManager.h"
 #include "logic/TransactionsManager.h"
+#include "logic/StatisticsManager.h"
 
 class Users;
 class PersonsManager;
 class GroupsManager;
 class TransactionsManager;
+class StatisticsManager;
 
 class Application
 {
@@ -26,6 +28,7 @@ public:
 	PersonsManager* GetPersonsManager();
 	GroupsManager* GetGroupsManager();
 	TransactionsManager* GetTransactionsManager();
+	StatisticsManager* GetStatisticsManager();
 
 private:
 	UnitOfWork* unit_of_work = nullptr;
@@ -34,7 +37,7 @@ private:
 	PersonsManager* persons_manager = nullptr;
 	GroupsManager* groups_manager = nullptr;
 	TransactionsManager* transactions_manager = nullptr;
-
+	StatisticsManager* statistics_manager = nullptr;
 	std::string title;
 	std::string version;
 

@@ -5,6 +5,8 @@
 #include "../core/Application.h"
 #include "wx/notebook.h"
 #include "wx/timectrl.h"
+#include "wx/charts/wxcolumnchartctrl.h"
+#include "wx/gbsizer.h"
 
 class MainPage;
 
@@ -99,6 +101,8 @@ private:
 	void DeleteButtonOnClick(wxCommandEvent& event);
 	void EnrollButtonOnClick(wxCommandEvent& event);
 	void DisenrollButtonOnClick(wxCommandEvent& event);
+	void PayButtonOnClick(wxCommandEvent& event);
+	void CollectButtonOnClick(wxCommandEvent& event);
 	void OnGroupSelected(wxGridEvent& e);
 	void OnTeacherComboBoxDropDown(wxCommandEvent& e);
 	void OnStudentComboBoxDropDown(wxCommandEvent& e);
@@ -131,6 +135,8 @@ private:
 	wxButton* add_btn;
 	wxButton* edit_btn;
 	wxButton* delete_btn;
+	wxButton* pay_btn;
+	wxButton* collect_btn;
 	wxButton* enroll_btn;
 	wxButton* disenroll_btn;
 
@@ -148,6 +154,7 @@ public:
 	~TransactionsPanel();
 
 	void PrepareGrids();
+	void PopulateTransactionsTable();
 
 private:
 
@@ -158,7 +165,6 @@ private:
 	void OnTransactionSelected(wxGridEvent& e);
 
 	void SetTransactionRow(Transaction p, int i);
-	void PopulateTransactionsTable();
 	void ResetControls();
 
 	wxTextCtrl* transaction_name_ctr;
@@ -173,6 +179,35 @@ private:
 	std::vector<Transaction> transaction_list;
 	Transaction selected_transaction;
 	int selected_row;
+
+	MainPage* main;
+};
+
+class DashboardPanel {
+public:
+	DashboardPanel(MainPage* main);
+	~DashboardPanel();
+
+	void UpdateDashboard();
+
+private:
+
+	void PopulateCharts();
+
+	wxTextCtrl* stat_teachers_count_ctr;
+	wxTextCtrl* stat_students_count_ctr;
+	wxTextCtrl* stat_groups_count_ctr;
+	wxTextCtrl* stat_total_expenses_ctr;
+	wxTextCtrl* stat_total_profits_ctr;
+	wxTextCtrl* stat_net_profit_ctr;
+
+	wxStaticText* dash_tmp_label;
+	wxStaticText* dash_parent_tmp;
+
+	wxColumnChartCtrl* stat_transactions_chart;
+	wxStaticBoxSizer* stat_trans_chart_sizer;
+
+	wxPanel* panel;
 
 	MainPage* main;
 };
@@ -195,11 +230,13 @@ public:
 
 private:
 	
+	void OnNotePageChanged(wxBookCtrlEvent& e);
 	void PrepareNotebookHeader();
 
 	StudentsPanel* students_panel = nullptr;
 	TeachersPanel* teachers_panel = nullptr;
 	GroupsPanel* groups_panel = nullptr;
 	TransactionsPanel* transactions_panel = nullptr;
+	DashboardPanel* dashboard_panel = nullptr;
 };
 

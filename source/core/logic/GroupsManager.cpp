@@ -2,6 +2,7 @@
 
 #define GROUPS_REP this->app->GetUnitOfWork()->GetGroupsRepository()
 #define PERSON_REP this->app->GetUnitOfWork()->GetPersonsRepository()
+#define TRANS_REP this->app->GetUnitOfWork()->GetTransactionsRepository()
 
 GroupsManager::GroupsManager(Application* app)
 {
@@ -47,8 +48,17 @@ void GroupsManager::DeleteGroup(int group_id)
 	this->app->GetUnitOfWork()->Commit();
 }
 
-void GroupsManager::PayTeacher(int num_months)
+void GroupsManager::PayTeacher(Group group, int num_months)
 {
+	Transaction t;
+	t.amount = ((group.price * group.teacher_percentage)/100) * -1 * num_months;
+	t.name = group.name;
+	t.name += "-TEACHERx";
+	t.name += std::to_string(num_months);
+
+	this->app->GetUnitOfWork()->Begin();
+	TRANS_REP->AddTransaction(t);
+	this->app->GetUnitOfWork()->Commit();
 }
 
 void GroupsManager::EnrollStudent(int student_id, int group_id)
@@ -65,8 +75,22 @@ void GroupsManager::DisenrollStudent(int student_id, int group_id)
 	this->app->GetUnitOfWork()->Commit();
 }
 
-void GroupsManager::PayStudentFees(int person_id)
+void GroupsManager::CollectStudentFees(Group group)
 {
+	std::vector<Person> members = this->GetGroupMembers(group.id);
+
+	if (members.size() == 0)
+		return;
+
+	Transaction t;
+	t.amount = group.price * members.size();
+	t.name = group.name;
+	t.name += "-STUDENTSx";
+	t.name += std::to_string(members.size());
+
+	this->app->GetUnitOfWork()->Begin();
+	TRANS_REP->AddTransaction(t);
+	this->app->GetUnitOfWork()->Commit();
 }
 
 Person GroupsManager::GetGroupTeacher(Group group)

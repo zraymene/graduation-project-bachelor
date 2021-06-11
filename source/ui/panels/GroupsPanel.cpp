@@ -6,12 +6,6 @@
 #define GROUPS_MANAGER this->main->app->GetGroupsManager()
 #define PERSONS_MANAGER this->main->app->GetPersonsManager()
 
-/*
-	TODO:
-		• Add pay teacher functionality
-		• Add setting student absence functionality
-*/
-
 GroupsPanel::GroupsPanel(MainPage* main)
 {
 	this->main = main;
@@ -53,6 +47,8 @@ GroupsPanel::GroupsPanel(MainPage* main)
 	this->delete_btn = XRCCTRL(*(this->main->frame), "delete_group_button", wxButton);
 	this->enroll_btn = XRCCTRL(*(this->main->frame), "group_enroll_student_button", wxButton);
 	this->disenroll_btn = XRCCTRL(*(this->main->frame), "group_disenroll_member_button", wxButton);
+	this->pay_btn = XRCCTRL(*(this->main->frame), "pay_group_button", wxButton);
+	this->collect_btn = XRCCTRL(*(this->main->frame), "collect_group_button", wxButton);
 
 	// Event binding
 	this->add_btn->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -65,6 +61,10 @@ GroupsPanel::GroupsPanel(MainPage* main)
 		&GroupsPanel::EnrollButtonOnClick, this);
 	this->disenroll_btn->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
 		&GroupsPanel::DisenrollButtonOnClick, this);
+	this->pay_btn->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
+		&GroupsPanel::PayButtonOnClick, this);
+	this->collect_btn->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
+		&GroupsPanel::CollectButtonOnClick, this);
 
 	this->groups_grid->Bind(wxEVT_GRID_SELECT_CELL,
 		&GroupsPanel::OnGroupSelected, this);
@@ -360,6 +360,58 @@ void GroupsPanel::DisenrollButtonOnClick(wxCommandEvent& event)
 	}
 }
 
+void GroupsPanel::PayButtonOnClick(wxCommandEvent& event)
+{
+	int answer = wxMessageBox("Pay the teacher?", "Confirm",
+		wxYES_NO, nullptr);
+	if (answer != wxYES)
+		return;
+	try
+	{
+		GROUPS_MANAGER->PayTeacher(this->selected_group,1);
+		this->ResetControls();
+
+		wxMessageBox("Teacher payed!",
+			"Success", wxICON_INFORMATION | wxOK);
+
+		event.Skip();
+	}
+	catch (std::exception e)
+	{
+		wxMessageBox(e.what(),
+			"Teacher paying Error",
+			wxICON_ERROR | wxOK);
+
+		event.Skip();
+	}
+}
+
+void GroupsPanel::CollectButtonOnClick(wxCommandEvent& event)
+{
+	int answer = wxMessageBox("Collect from students?", "Confirm",
+		wxYES_NO, nullptr);
+	if (answer != wxYES)
+		return;
+	try
+	{
+		GROUPS_MANAGER->CollectStudentFees(this->selected_group);
+		this->ResetControls();
+
+		wxMessageBox("Student's fees collected!",
+			"Success", wxICON_INFORMATION | wxOK);
+
+		event.Skip();
+	}
+	catch (std::exception e)
+	{
+		wxMessageBox(e.what(),
+			"Student fees collecting Error",
+			wxICON_ERROR | wxOK);
+
+		event.Skip();
+	}
+}
+
 void GroupsPanel::OnGroupSelected(wxGridEvent& e)
 {
 	this->ResetControls();
@@ -405,6 +457,8 @@ void GroupsPanel::OnGroupSelected(wxGridEvent& e)
 	this->delete_btn->Enable();
 	this->enroll_btn->Enable();
 	this->disenroll_btn->Enable();
+	this->pay_btn->Enable();
+	this->collect_btn->Enable();
 
 	this->PopulateGroupMembersTable();
 }
@@ -562,6 +616,8 @@ void GroupsPanel::ResetControls()
 	this->delete_btn->Enable(0);
 	this->enroll_btn->Enable(0);
 	this->disenroll_btn->Enable(0);
+	this->pay_btn->Enable(0);
+	this->collect_btn->Enable(0);
 
 	// Reset secondary grids
 	if (this->group_members_grid->GetNumberRows() > 0)
