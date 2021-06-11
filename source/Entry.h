@@ -9,6 +9,7 @@
 #include "ui/InitialPage.h"
 
 class InitialPage;
+class MainPage;
 
 class Entry : public wxApp
 {

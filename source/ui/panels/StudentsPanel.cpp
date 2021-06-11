@@ -179,10 +179,12 @@ void StudentsPanel::SetStudentRow(Person p, int i)
 void StudentsPanel::PopulateStudentsTable()
 {
 	this->students_grid->CreateGrid(this->student_list.size(), 3);
+	std::vector<Person>::iterator iter;
 
-	for (int i = 0; i < this->student_list.size(); i++)
+	int j = 0;
+	for (iter = this->student_list.begin(); iter < this->student_list.end(); iter++, j++)
 	{
-		this->SetStudentRow(this->student_list.at(i), i);
+		this->SetStudentRow(*(iter), j);
 	}
 }
 
@@ -191,14 +193,16 @@ void StudentsPanel::PopulateStudentGroups()
 	try {
 		std::vector<Group> groups
 			= PERSON_MANAGER->GetStudentGroupsEnrolledIn(selected_student.id);
+		std::vector<Group>::iterator iter;
 
-		for (int i = 0; i < groups.size(); i++)
+		int j = 0;
+		for (iter = groups.begin(); iter < groups.end(); iter++, j++)
 		{
 			this->student_group_grid->AppendRows(1, false);
-			this->student_group_grid->SetCellValue(wxGridCellCoords{ i,0 },
-				groups.at(i).name);
-			this->student_group_grid->SetCellValue(wxGridCellCoords{ i,1 },
-				wxNumberFormatter::ToString(groups.at(i).price, 2));
+			this->student_group_grid->SetCellValue(wxGridCellCoords{ j,0 },
+				(*iter).name);
+			this->student_group_grid->SetCellValue(wxGridCellCoords{ j,1 },
+				wxNumberFormatter::ToString((*iter).price, 3));
 		}
 	}
 	catch (std::exception e)
@@ -215,14 +219,16 @@ void StudentsPanel::PopulateStudentAbsence()
 	try {
 		std::vector<StudentAbsense> groups
 			= PERSON_MANAGER->GetStudentAbsense(selected_student.id);
+		std::vector<StudentAbsense>::iterator iter;
 
-		for (int i = 0; i < groups.size(); i++)
+		int j = 0;
+		for (iter = groups.begin(); iter < groups.end(); iter++, j++)
 		{
 			this->student_absence_grid->AppendRows(1, false);
-			this->student_absence_grid->SetCellValue(wxGridCellCoords{ i,0 },
-				groups.at(i).group.name);
-			this->student_absence_grid->SetCellValue(wxGridCellCoords{ i,1 },
-				groups.at(i).absense.date);
+			this->student_absence_grid->SetCellValue(wxGridCellCoords{ j,0 },
+				(*iter).group.name);
+			this->student_absence_grid->SetCellValue(wxGridCellCoords{ j,1 },
+				(*iter).absense.date);
 		}
 	}
 	catch (std::exception e)

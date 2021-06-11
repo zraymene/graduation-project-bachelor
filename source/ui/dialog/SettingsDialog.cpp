@@ -90,6 +90,9 @@ void SettingsDialog::Show(bool auto_connect)
 		"SettingsDialog"))
 		wxLogError("Coudn't load SettingsDialog from resources !");
 
+	this->dialog->Bind(wxEVT_CLOSE_WINDOW,
+		&SettingsDialog::OnClose, this);
+
 	this->database_choice = XRCCTRL(*dialog, "database_choice", wxChoice);
 	this->hostname_ctr = XRCCTRL(*dialog, "hostname_ctr", wxTextCtrl);
 	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);

@@ -25,3 +25,8 @@ void InitDialog::Close(bool hide)
 	else
 		this->dialog->Destroy();
 }
+
+void InitDialog::OnClose(wxCloseEvent& e)
+{
+	this->page->entry->Exit();
+}

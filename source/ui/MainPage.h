@@ -7,7 +7,9 @@
 #include "wx/timectrl.h"
 #include "wx/charts/wxcolumnchartctrl.h"
 #include "wx/gbsizer.h"
+#include "../Entry.h"
 
+class Entry;
 class MainPage;
 
 class StudentsPanel{
@@ -205,10 +207,9 @@ private:
 	wxStaticText* dash_parent_tmp;
 
 	wxColumnChartCtrl* stat_transactions_chart;
-	wxStaticBoxSizer* stat_trans_chart_sizer;
-
+ 
 	wxPanel* panel;
-
+	 
 	MainPage* main;
 };
 
@@ -216,7 +217,7 @@ class MainPage
 {
 public:
 
-	MainPage(Application* app);
+	MainPage(Entry* entry);
 	~MainPage();
 
 	void Show();
@@ -230,6 +231,7 @@ public:
 
 private:
 	
+	void OnClose(wxCloseEvent& e);
 	void OnNotePageChanged(wxBookCtrlEvent& e);
 	void PrepareNotebookHeader();
 
@@ -238,5 +240,7 @@ private:
 	GroupsPanel* groups_panel = nullptr;
 	TransactionsPanel* transactions_panel = nullptr;
 	DashboardPanel* dashboard_panel = nullptr;
+
+	Entry* entry;
 };
 

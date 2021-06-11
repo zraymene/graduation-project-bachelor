@@ -19,6 +19,8 @@ public:
 protected:
 	wxDialog* dialog;
 	InitialPage* page;
+
+	void OnClose(wxCloseEvent& e);
 };
 
 class SettingsDialog : public InitDialog {

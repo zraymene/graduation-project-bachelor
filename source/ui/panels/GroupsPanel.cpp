@@ -560,10 +560,12 @@ void GroupsPanel::SetMemberRow(Person p, int i)
 void GroupsPanel::PopulateGroupsTable()
 {
 	this->groups_grid->CreateGrid(this->groups_list.size(), 4);
+	std::vector<Group>::iterator iter;
 
-	for (int i = 0; i < this->groups_list.size(); i++)
+	int j = 0;
+	for (iter = this->groups_list.begin(); iter < this->groups_list.end(); iter++, j++)
 	{
-		this->SetGroupRow(this->groups_list.at(i), i);
+		this->SetGroupRow((*iter), j);
 	}
 }
 

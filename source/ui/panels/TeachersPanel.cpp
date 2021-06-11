@@ -220,16 +220,18 @@ void TeachersPanel::PopulateTeacherGroups()
 	try {
 		std::vector<Group> groups
 			= PERSON_MANAGER->GetTeacherGroups(selected_teacher.id);
+		std::vector<Group>::iterator iter;
 
-		for (int i = 0; i < groups.size(); i++)
+		int j = 0;
+		for (iter = groups.begin(); iter < groups.end(); iter++, j++)
 		{
 			this->teacher_groups_grid->AppendRows(1, false);
-			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ i,0 },
-				groups.at(i).name);
-			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ i,1 },
-				wxNumberFormatter::ToString(groups.at(i).price, 2));
-			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ i,2 },
-				wxNumberFormatter::ToString(groups.at(i).teacher_percentage, 3));
+			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ j,0 },
+				(*iter).name);
+			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ j,1 },
+				wxNumberFormatter::ToString((*iter).price, 2));
+			this->teacher_groups_grid->SetCellValue(wxGridCellCoords{ j,2 },
+				wxNumberFormatter::ToString((*iter).teacher_percentage, 3));
 		}
 	}
 	catch (std::exception e)

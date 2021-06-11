@@ -1,12 +1,14 @@
 #include "MainPage.h"
 
 #include "wx/xrc/xmlres.h"
-
+#include "wx/app.h"
 #define XRC_PATH "rc/main.xrc"
 
-MainPage::MainPage(Application* app)
+MainPage::MainPage(Entry* entry)
 {
-	this->app = app;
+	this->entry = entry;
+	this->app = entry->application;
+
 	// Prepare prices ctr validator
 	this->prices_validator = new wxTextValidator(wxFILTER_NUMERIC);
 
@@ -16,6 +18,9 @@ MainPage::MainPage(Application* app)
 	if (!(this->frame = wxXmlResource::Get()->LoadFrame(nullptr,
 		"MainFrame")))
 		wxLogError("Coudn't load Main Frame from resources !");
+
+	this->frame->Bind(wxEVT_CLOSE_WINDOW,
+		&MainPage::OnClose, this);
 
 	this->students_panel = new StudentsPanel(this);
 	this->teachers_panel = new TeachersPanel(this);
@@ -89,14 +94,25 @@ void MainPage::StyleGrid(wxGrid* grid, int height )
 	grid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
 }
 
+void MainPage::OnClose(wxCloseEvent& e)
+{
+	// Forced it to close
+	this->entry->Exit();
+}
+
 void MainPage::OnNotePageChanged(wxBookCtrlEvent& e)
 {
 	switch (e.GetSelection())
 	{
+		// Dashboard
+		case 0:
+			this->dashboard_panel->UpdateDashboard();
+			break;
 		// Transactions page is selected
 		case 4:
 			// Refresh transactions panel
 			this->transactions_panel->PopulateTransactionsTable();
+			break;
 		case wxNOT_FOUND:
 			break;
 	}

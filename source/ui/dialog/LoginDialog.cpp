@@ -57,6 +57,9 @@ void LoginDialog::Show()
 		"LoginDialog"))
 		wxLogError("Coudn't load LoginDialog from resources !");
 
+	this->dialog->Bind(wxEVT_CLOSE_WINDOW,
+		&LoginDialog::OnClose, this);
+
 	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);
 	this->password_ctr = XRCCTRL(*dialog, "password_ctr", wxTextCtrl);
 	this->login_button = XRCCTRL(*dialog, "login_button", wxButton);

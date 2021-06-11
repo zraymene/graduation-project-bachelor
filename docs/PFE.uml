@@ -14134,7 +14134,7 @@ that day
 <XPD:REF name="Views[1]">mGJZX50dAEq3Y0B46T47pwAA</XPD:REF>
 <XPD:REF name="Views[2]">LhoKxBfg6ES3Af1W0U8Q8AAA</XPD:REF>
 <XPD:REF name="Views[3]">sbZvfF9TpUSfcpWcWZl1fwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">8</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">9</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="IJ2LU638Uk+PB2eWNbvjPwAA">
 <XPD:ATTR name="Name" type="string">GetStudentsCount</XPD:ATTR>
 <XPD:REF name="Owner">N8T25sVAd0+TafH48Q1U2AAA</XPD:REF>
@@ -14215,6 +14215,16 @@ that day
 <XPD:REF name="BehavioralFeature">5R6Lh0UfPkGxNeORppaoUQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
+<XPD:OBJ name="Operations[8]" type="UMLOperation" guid="uYpT5bvxPUqtTxsWaUjHzAAA">
+<XPD:ATTR name="Name" type="string">GetMonthsList</XPD:ATTR>
+<XPD:REF name="Owner">N8T25sVAd0+TafH48Q1U2AAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="TLJW4nj2kU6UlObDD2DovQAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">string[]</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">uYpT5bvxPUqtTxsWaUjHzAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">Rx2YmnI7kkqjb2PuTuFcOwAA</XPD:REF>
 </XPD:OBJ>
@@ -14232,8 +14242,8 @@ that day
 <XPD:REF name="Participant">N8T25sVAd0+TafH48Q1U2AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">tGEkxpkDeEWcuMbdsa7+ngAA</XPD:REF>
-<XPD:REF name="Views[1]">jFWp8NIyXUq7QRXa/Anb6gAA</XPD:REF>
-<XPD:REF name="Views[2]">uuq+NuBwzkSipw6XkgzeRwAA</XPD:REF>
+<XPD:REF name="Views[1]">uuq+NuBwzkSipw6XkgzeRwAA</XPD:REF>
+<XPD:REF name="Views[2]">jFWp8NIyXUq7QRXa/Anb6gAA</XPD:REF>
 <XPD:REF name="Views[3]">zKL49MidfEODjNFEKOJvBAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="leWLBF1kFEG7BfukEpUFDQAA">
@@ -14242,8 +14252,8 @@ that day
 <XPD:REF name="Participant">NphOh+HPHUKJXSt5pw4C1AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">IWpWqSdqPkGDllXvL2JgnQAA</XPD:REF>
-<XPD:REF name="Views[1]">dYOSODiJrkWHnzCclSj63wAA</XPD:REF>
-<XPD:REF name="Views[2]">3vwqq6F89USnYNjVgSMuBAAA</XPD:REF>
+<XPD:REF name="Views[1]">3vwqq6F89USnYNjVgSMuBAAA</XPD:REF>
+<XPD:REF name="Views[2]">dYOSODiJrkWHnzCclSj63wAA</XPD:REF>
 <XPD:REF name="Views[3]">JRPafv/jPUycRsJy3S13IwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>

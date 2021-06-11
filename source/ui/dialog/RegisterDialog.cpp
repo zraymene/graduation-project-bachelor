@@ -53,6 +53,9 @@ void RegisterDialog::Show()
 		"RegisterDialog"))
 		wxLogError("Coudn't load RegisterDialog from resources !");
 
+	this->dialog->Bind(wxEVT_CLOSE_WINDOW,
+		&RegisterDialog::OnClose, this);
+
 	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);
 	this->password_ctr = XRCCTRL(*dialog, "password_ctr", wxTextCtrl);
 	this->register_button = XRCCTRL(*dialog, "register_button", wxButton);
