@@ -120,6 +120,13 @@ std::vector<std::string> StatisticsManager::GetMonthsList()
 
 void StatisticsManager::PopulateDataset()
 {
+
+	// The Algo below adds a grabage value when there is no transactions
+	// Which make the chart allocat mroe then 500 MB then crashs
+	// So when transaction cache is empty do nothing
+	if (transactions_cache.empty())
+		return;
+
 	std::vector<Transaction>::iterator iter;
 	int year, month, lyear = 0, lmonth = 0;
 

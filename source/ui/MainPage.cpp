@@ -99,6 +99,10 @@ void MainPage::OnNotePageChanged(wxBookCtrlEvent& e)
 			this->dashboard_panel->UpdateDashboard();
 			break;
 		// Transactions page is selected
+		case 3:
+			// Update groups table
+			this->groups_panel->UpdateGroupsTable();
+			break;
 		case 4:
 			// Refresh transactions panel
 			this->transactions_panel->PopulateTransactionsTable();

@@ -73,7 +73,7 @@ void TransactionsPanel::AddButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Transaction adding Error",
@@ -110,7 +110,7 @@ void TransactionsPanel::EditButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Transaction Editing Error",
@@ -143,7 +143,7 @@ void TransactionsPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Transaction Deleting Error",
@@ -198,7 +198,7 @@ void TransactionsPanel::PopulateTransactionsTable()
 	{
 		this->transaction_list = TRANS_MANAGER->GetTransactions();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading transactions table",

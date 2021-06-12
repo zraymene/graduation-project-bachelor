@@ -26,7 +26,7 @@ void RegisterDialog::Register(wxCommandEvent& event)
 
 		this->page->entry->SwitchToMainPage();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Registeration Error",

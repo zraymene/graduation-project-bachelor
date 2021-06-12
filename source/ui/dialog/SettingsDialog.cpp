@@ -55,7 +55,7 @@ void SettingsDialog::TryConnect()
 		this->dialog.Hide();
 
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Connection Error",

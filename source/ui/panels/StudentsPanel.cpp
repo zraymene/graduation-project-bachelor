@@ -32,7 +32,7 @@ void StudentsPanel::AddButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student Registering Error",
@@ -73,7 +73,7 @@ void StudentsPanel::EditButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student Editing Error",
@@ -106,7 +106,7 @@ void StudentsPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student Deleting Error",
@@ -205,7 +205,7 @@ void StudentsPanel::PopulateStudentGroups()
 				wxNumberFormatter::ToString((*iter).price, 3));
 		}
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading student's groups table",
@@ -231,7 +231,7 @@ void StudentsPanel::PopulateStudentAbsence()
 				(*iter).absense.date);
 		}
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading student's absence table",
@@ -270,7 +270,7 @@ void StudentsPanel::PrepareGrids()
 	{
 		this->student_list = PERSON_MANAGER->GetStudentsList();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading students table",

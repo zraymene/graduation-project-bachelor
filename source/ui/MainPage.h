@@ -95,6 +95,7 @@ public:
 	~GroupsPanel();
 
 	void PrepareGrids();
+	void UpdateGroupsTable();
 
 private:
 
@@ -112,7 +113,6 @@ private:
 
 	void SetGroupRow(Group p, int i);
 	void SetMemberRow(Person p, int i);
-	void PopulateGroupsTable();
 	void PopulateGroupMembersTable();
 	void ResetControls();
 

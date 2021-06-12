@@ -88,14 +88,15 @@ void GroupsPanel::PrepareGrids()
 	{
 		this->groups_list = GROUPS_MANAGER->GetGroups();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading groups table",
 			wxICON_ERROR | wxOK);
 	}
 
-	this->PopulateGroupsTable();
+	this->groups_grid->CreateGrid(0, 4);
+	//this->UpdateGroupsTable();
 	this->groups_grid->SetColLabelValue(0, "Name");
 	this->groups_grid->SetColLabelValue(1, "Teacher");
 	this->groups_grid->SetColLabelValue(2, "Price");
@@ -174,7 +175,7 @@ void GroupsPanel::AddButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Group Registering Error",
@@ -239,7 +240,7 @@ void GroupsPanel::EditButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Group Editing Error",
@@ -272,7 +273,7 @@ void GroupsPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Group Deleting Error",
@@ -311,7 +312,7 @@ void GroupsPanel::EnrollButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student enrolling Error",
@@ -350,7 +351,7 @@ void GroupsPanel::DisenrollButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student disenrolling Error",
@@ -376,7 +377,7 @@ void GroupsPanel::PayButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Teacher paying Error",
@@ -402,7 +403,7 @@ void GroupsPanel::CollectButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Student fees collecting Error",
@@ -557,16 +558,34 @@ void GroupsPanel::SetMemberRow(Person p, int i)
 		p.phone);
 }
 
-void GroupsPanel::PopulateGroupsTable()
+void GroupsPanel::UpdateGroupsTable()
 {
-	this->groups_grid->CreateGrid(this->groups_list.size(), 4);
-	std::vector<Group>::iterator iter;
+	if (this->groups_grid->GetNumberRows() > 0)
+	{
+		this->groups_grid->DeleteRows(0, this->groups_grid->GetNumberRows());
+		this->groups_grid->ForceRefresh();
+	}
 
+	try
+	{
+		this->groups_list = GROUPS_MANAGER->GetGroups();
+	}
+	catch (std::runtime_error e)
+	{
+		wxMessageBox(e.what(),
+			"Loading groups table",
+			wxICON_ERROR | wxOK);
+	}
+
+	std::vector<Group>::iterator iter;
 	int j = 0;
 	for (iter = this->groups_list.begin(); iter < this->groups_list.end(); iter++, j++)
 	{
+		this->groups_grid->AppendRows(1, false);
 		this->SetGroupRow((*iter), j);
 	}
+
+	this->ResetControls();
 }
 
 void GroupsPanel::PopulateGroupMembersTable()
@@ -585,7 +604,7 @@ void GroupsPanel::PopulateGroupMembersTable()
 			this->memebers.push_back((*i));
 		}
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading group's members table",

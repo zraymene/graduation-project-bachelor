@@ -43,7 +43,7 @@ void TeachersPanel::PrepareGrids()
 	{
 		this->teachers_list = PERSON_MANAGER->GetTeachersList();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading teachers table",
@@ -92,7 +92,7 @@ void TeachersPanel::AddButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Teacher Registering Error",
@@ -133,7 +133,7 @@ void TeachersPanel::EditButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Teacher Editing Error",
@@ -152,7 +152,7 @@ void TeachersPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 	try {
 
-		PERSON_MANAGER->DeleteStudent(
+		PERSON_MANAGER->DeleteTeacher(
 			this->selected_teacher.id
 		);
 
@@ -166,7 +166,7 @@ void TeachersPanel::DeleteButtonOnClick(wxCommandEvent& event)
 
 		event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Teacher Deleting Error",
@@ -234,7 +234,7 @@ void TeachersPanel::PopulateTeacherGroups()
 				wxNumberFormatter::ToString((*iter).teacher_percentage, 3));
 		}
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Loading teacher's groups table",

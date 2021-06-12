@@ -28,7 +28,7 @@ void LoginDialog::Login(wxCommandEvent& event)
 		this->page->entry->SwitchToMainPage();
 	//	event.Skip();
 	}
-	catch (std::exception e)
+	catch (std::runtime_error e)
 	{
 		wxMessageBox(e.what(),
 			"Login Error",
