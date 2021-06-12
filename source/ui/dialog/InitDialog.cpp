@@ -3,17 +3,20 @@
 InitDialog::InitDialog(InitialPage* page)
 {
 	this->page = page;
+	
 }
 
 bool InitDialog::Show()
 {
-	if (dialog)
+	// SEG FAULT IN LINUX HIR !!!
+	if (dialog_loaded)
 	{
-		this->dialog->Show();
+		this->dialog.Show();
 		return false;
 	}
 
-	this->dialog = new wxDialog();
+	dialog_loaded = true;
+	//this->dialog = new wxDialog();
 
 	return true;
 }
@@ -21,12 +24,18 @@ bool InitDialog::Show()
 void InitDialog::Close(bool hide)
 {
 	if (hide)
-		this->dialog->Hide();
+		this->dialog.Hide();
 	else
-		this->dialog->Destroy();
+	{
+		if(dialog_loaded)
+			this->dialog.Destroy();
+	}
 }
 
 void InitDialog::OnClose(wxCloseEvent& e)
 {
-	this->page->entry->Exit();
+	//this->page->entry->Exit();
+	
+	this->page->Close();
+	e.Skip();
 }

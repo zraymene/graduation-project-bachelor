@@ -17,7 +17,6 @@ public:
 	MYSQLUnitOfWork();
 	~MYSQLUnitOfWork();
 
-	static void test();
 private:
 	MYSQL mysql_connection;
 

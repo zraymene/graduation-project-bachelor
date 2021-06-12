@@ -52,7 +52,8 @@ void SettingsDialog::TryConnect()
 
 		this->save_button->Enable();
 
-		this->dialog->Hide();
+		this->dialog.Hide();
+
 	}
 	catch (std::exception e)
 	{
@@ -77,8 +78,6 @@ void SettingsDialog::SaveButtonClick(wxCommandEvent& event)
 	);
 
 	this->TryConnect();
-
-	event.Skip(); 
 }
 
 void SettingsDialog::Show(bool auto_connect)
@@ -86,25 +85,25 @@ void SettingsDialog::Show(bool auto_connect)
 	if (!InitDialog::Show())
 		return;
 
-	if (!wxXmlResource::Get()->LoadDialog(this->dialog, nullptr,
+	if (!wxXmlResource::Get()->LoadDialog(&this->dialog, nullptr,
 		"SettingsDialog"))
 		wxLogError("Coudn't load SettingsDialog from resources !");
 
-	this->dialog->Bind(wxEVT_CLOSE_WINDOW,
+	this->dialog.Bind(wxEVT_CLOSE_WINDOW,
 		&SettingsDialog::OnClose, this);
 
-	this->database_choice = XRCCTRL(*dialog, "database_choice", wxChoice);
-	this->hostname_ctr = XRCCTRL(*dialog, "hostname_ctr", wxTextCtrl);
-	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);
-	this->password_ctr = XRCCTRL(*dialog, "password_ctr", wxTextCtrl);
-	this->save_button = XRCCTRL(*dialog, "save_button", wxButton);
+	this->database_choice = XRCCTRL(dialog, "database_choice", wxChoice);
+	this->hostname_ctr = XRCCTRL(dialog, "hostname_ctr", wxTextCtrl);
+	this->username_ctr = XRCCTRL(dialog, "username_ctr", wxTextCtrl);
+	this->password_ctr = XRCCTRL(dialog, "password_ctr", wxTextCtrl);
+	this->save_button = XRCCTRL(dialog, "save_button", wxButton);
 
 	save_button->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
 		&SettingsDialog::SaveButtonClick, this);
 
 	this->Init(auto_connect);
 
-	dialog->Show();
+	dialog.Show();
 
 }
 

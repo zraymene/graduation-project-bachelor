@@ -26,6 +26,6 @@ private:
 	wxLogWindow* log_windows = nullptr;
 
 	InitialPage* init_page = nullptr;
-	MainPage* main_page;
+	MainPage* main_page = = nullptr;
 };
 

@@ -17,8 +17,10 @@ public:
 	void Close(bool hide = false);
 
 protected:
-	wxDialog* dialog;
-	InitialPage* page;
+	wxDialog dialog;
+	InitialPage* page = nullptr;
+
+	bool dialog_loaded = false;
 
 	void OnClose(wxCloseEvent& e);
 };
@@ -144,10 +146,12 @@ public:
 		}
 	}
 
+	void Close();
+
 private:
 	 
-	SettingsDialog* settings_dialog;
-	LoginDialog* login_dialog;
-	RegisterDialog* register_dialog;
+	SettingsDialog* settings_dialog = nullptr;
+	LoginDialog* login_dialog = nullptr;
+	RegisterDialog* register_dialog = nullptr;
 };
 

@@ -51,9 +51,9 @@ public:
 protected:
 	Database* database = nullptr;
 
-	UserRepository* user_rep;
-	PersonsRepository* persons_rep;
-	TransactionsRepository* transactions_rep;
-	GroupsRepository* groups_rep;
+	UserRepository* user_rep = nullptr;
+	PersonsRepository* persons_rep = nullptr;
+	TransactionsRepository* transactions_rep = nullptr;
+	GroupsRepository* groups_rep = nullptr;
 };
 

@@ -24,9 +24,9 @@ void LoginDialog::Login(wxCommandEvent& event)
 
 		// Swap to dashboard page
 		//
-		event.Skip();
 
 		this->page->entry->SwitchToMainPage();
+	//	event.Skip();
 	}
 	catch (std::exception e)
 	{
@@ -40,7 +40,7 @@ void LoginDialog::Login(wxCommandEvent& event)
 
 void LoginDialog::SwapToSettings(wxCommandEvent& event)
 {
-	this->dialog->Hide();
+	this->dialog.Hide();
 
 	this->page->ShowDialog<SettingsDialog>();
 
@@ -53,24 +53,24 @@ void LoginDialog::Show()
 	if (!InitDialog::Show())
 		return;
 
-	if (!wxXmlResource::Get()->LoadDialog(this->dialog, nullptr,
+	if (!wxXmlResource::Get()->LoadDialog(&this->dialog, nullptr,
 		"LoginDialog"))
 		wxLogError("Coudn't load LoginDialog from resources !");
 
-	this->dialog->Bind(wxEVT_CLOSE_WINDOW,
+	this->dialog.Bind(wxEVT_CLOSE_WINDOW,
 		&LoginDialog::OnClose, this);
 
-	this->username_ctr = XRCCTRL(*dialog, "username_ctr", wxTextCtrl);
-	this->password_ctr = XRCCTRL(*dialog, "password_ctr", wxTextCtrl);
-	this->login_button = XRCCTRL(*dialog, "login_button", wxButton);
-	this->settings_button = XRCCTRL(*dialog, "settings_button", wxButton);
+	this->username_ctr = XRCCTRL(dialog, "username_ctr", wxTextCtrl);
+	this->password_ctr = XRCCTRL(dialog, "password_ctr", wxTextCtrl);
+	this->login_button = XRCCTRL(dialog, "login_button", wxButton);
+	this->settings_button = XRCCTRL(dialog, "settings_button", wxButton);
 
 	login_button->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
 		&LoginDialog::Login, this);
 	settings_button->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
 		&LoginDialog::SwapToSettings, this);
 
-	dialog->Show();
+	dialog.Show();
 }
 
 LoginDialog::~LoginDialog()

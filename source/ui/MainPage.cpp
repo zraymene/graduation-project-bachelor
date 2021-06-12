@@ -18,10 +18,6 @@ MainPage::MainPage(Entry* entry)
 	if (!(this->frame = wxXmlResource::Get()->LoadFrame(nullptr,
 		"MainFrame")))
 		wxLogError("Coudn't load Main Frame from resources !");
-
-	this->frame->Bind(wxEVT_CLOSE_WINDOW,
-		&MainPage::OnClose, this);
-
 	this->students_panel = new StudentsPanel(this);
 	this->teachers_panel = new TeachersPanel(this);
 	this->groups_panel = new GroupsPanel(this);
@@ -92,12 +88,6 @@ void MainPage::StyleGrid(wxGrid* grid, int height )
 		wxFont{ 10, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL }
 	);
 	grid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
-}
-
-void MainPage::OnClose(wxCloseEvent& e)
-{
-	// Forced it to close
-	this->entry->Exit();
 }
 
 void MainPage::OnNotePageChanged(wxBookCtrlEvent& e)

@@ -231,7 +231,6 @@ public:
 
 private:
 	
-	void OnClose(wxCloseEvent& e);
 	void OnNotePageChanged(wxBookCtrlEvent& e);
 	void PrepareNotebookHeader();
 

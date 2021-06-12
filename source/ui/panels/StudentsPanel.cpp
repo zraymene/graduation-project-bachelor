@@ -1,6 +1,6 @@
 #include "../MainPage.h"
 
-#include <wx\xrc\xmlres.h>
+#include "wx/wx.h"
 #include <wx/numformatter.h>
 
 #define PERSON_MANAGER this->main->app->GetPersonsManager()

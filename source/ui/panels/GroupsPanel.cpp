@@ -1,7 +1,7 @@
 #include "../MainPage.h"
 
-#include <wx\xrc\xmlres.h>
-#include <wx\numformatter.h>
+#include "wx/wx.h"
+#include <wx/numformatter.h>
 
 #define GROUPS_MANAGER this->main->app->GetGroupsManager()
 #define PERSONS_MANAGER this->main->app->GetPersonsManager()

@@ -79,7 +79,7 @@ void extractDate(std::string str, int* year, int* month)
 {
 	int d, h, m, s;
 	//2021-06-11 13:31:34
-	sscanf_s(str.c_str(), "%4d-%2d-%2d %2d:%2d:%2d",
+	std::sscanf(str.c_str(), "%4d-%2d-%2d %2d:%2d:%2d",
 		year, month, &d, &h, &m, &s);
 }
 
